@@ -1,0 +1,48 @@
+name: NOMOS Collection & Intelligence
+
+on:
+  schedule:
+    # Runs daily at 6 AM Colombia time (11 AM UTC)
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+jobs:
+  collect-and-generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Run Collection
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+        run: |
+          python run_collection.py
+      
+      - name: Generate Intelligence JSON
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          python generate_intelligence.py
+      
+      - name: Commit JSON to repo
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "NOMOS Bot"
+          git add nomos_home_intelligence.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "🧠 Auto-update: Intelligence JSON $(date +'%Y-%m-%d')"
+          git push
