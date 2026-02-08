@@ -1,0 +1,25 @@
+{
+  "insights": {
+    "Poco Tráfico": {
+      "reddit_voice": "Necesito ayuda con poco tráfico",
+      "signal_count": 0
+    },
+    "Técnico": {
+      "reddit_voice": "Necesito ayuda con técnico",
+      "signal_count": 0
+    },
+    "Competencia": {
+      "reddit_voice": "Necesito ayuda con competencia",
+      "signal_count": 0
+    },
+    "Baja Conversión": {
+      "reddit_voice": "Necesito ayuda con baja conversión",
+      "signal_count": 0
+    }
+  },
+  "metadata": {
+    "generated_at": "2026-02-08T23:01:54.366339",
+    "total_signals": 0,
+    "version": "2.0-auto"
+  }
+}
