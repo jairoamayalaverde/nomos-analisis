@@ -9,6 +9,9 @@ on:
 jobs:
   collect-and-generate:
     runs-on: ubuntu-latest
+    # 🔴 PROTOCOLO DE PERMISOS: Necesario para evitar el error 403
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout code
@@ -44,5 +47,12 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "NOMOS Bot"
           git add nomos_home_intelligence.json
+          # Solo hace commit si hay cambios reales
           git diff --quiet && git diff --staged --quiet || git commit -m "🧠 Auto-update: Intelligence JSON $(date +'%Y-%m-%d')"
-          git push
+          
+      - name: Push changes
+        # Usamos una acción oficial para manejar el push con el token de permisos
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
