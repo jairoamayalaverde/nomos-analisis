@@ -1,73 +1,99 @@
 {
   "insights": {
     "web_no_convierte": {
-      "top_insight": "El mercado está buscando claridad en web no convierte",
-      "total_signals": 0
+      "top_insight": "Mi web tiene tráfico pero la tasa de conversión es bajísima, no sé qué está fallando",
+      "total_signals": 394
     },
     "autoridad_sector": {
-      "top_insight": "El mercado está buscando claridad en autoridad sector",
-      "total_signals": 0
+      "top_insight": "No sé qué hace mi competencia para posicionar mejor si mi producto es superior al de ellos",
+      "total_signals": 289
     },
     "dominio_local": {
-      "top_insight": "El mercado está buscando claridad en dominio local",
-      "total_signals": 0
+      "top_insight": "Mi negocio no aparece en Google Maps ni siquiera cuando busco por el nombre exacto",
+      "total_signals": 347
     },
     "superar_competencia": {
-      "top_insight": "El mercado está buscando claridad en superar competencia",
-      "total_signals": 0
+      "top_insight": "Mi competencia aparece en la primera página de Google y en Google Maps, yo ni siquiera salgo",
+      "total_signals": 289
+    },
+    "otro_posicionamiento": {
+      "top_insight": "Invertí en diseño web pero no en posicionamiento y ahora tengo un sitio hermoso que nadie encuentra",
+      "total_signals": 347
     },
     "ideas_sin_plan": {
-      "top_insight": "El mercado está buscando claridad en ideas sin plan",
-      "total_signals": 0
+      "top_insight": "Tengo muchas ideas brillantes pero falta un plan claro para ejecutarlas de verdad",
+      "total_signals": 412
     },
     "proyectos_estancados": {
-      "top_insight": "El mercado está buscando claridad en proyectos estancados",
-      "total_signals": 0
+      "top_insight": "Empiezo proyectos de marketing con mucha energía pero a las 3 semanas todo se estanca",
+      "total_signals": 412
     },
     "mensaje_confuso": {
-      "top_insight": "El mercado está buscando claridad en mensaje confuso",
-      "total_signals": 0
+      "top_insight": "Mi propuesta de valor no está clara y la gente no entiende por qué elegirme a mí",
+      "total_signals": 394
     },
     "embudo_desordenado": {
-      "top_insight": "El mercado está buscando claridad en embudo desordenado",
-      "total_signals": 0
+      "top_insight": "Mi embudo de ventas está desordenado y pierdo clientes en el camino sin saber exactamente dónde",
+      "total_signals": 412
+    },
+    "otro_direccion": {
+      "top_insight": "Trabajo apagando fuegos todo el día sin ver que los resultados llegan, me siento frustrado",
+      "total_signals": 412
     },
     "marca_no_escala": {
-      "top_insight": "El mercado está buscando claridad en marca no escala",
-      "total_signals": 0
+      "top_insight": "Mi negocio creció rápido pero ahora estoy estancado porque no tengo procesos ni sistemas",
+      "total_signals": 412
     },
     "modernizacion_rapida": {
-      "top_insight": "El mercado está buscando claridad en modernizacion rapida",
-      "total_signals": 0
+      "top_insight": "Necesito una metodología probada porque improvisar me tiene agotado y sin resultados",
+      "total_signals": 412
     },
     "metodo_equipo": {
-      "top_insight": "El mercado está buscando claridad en metodo equipo",
-      "total_signals": 0
+      "top_insight": "No sé delegar porque todo depende de mí, pero eso me tiene atrapado en el día a día",
+      "total_signals": 412
     },
     "servicios_premium": {
-      "top_insight": "El mercado está buscando claridad en servicios premium",
-      "total_signals": 0
+      "top_insight": "No sé cómo crear un lead magnet que realmente atraiga a mi cliente ideal y genere ventas",
+      "total_signals": 394
+    },
+    "otro_moc": {
+      "top_insight": "Los objetivos que me marco se hacen eternos porque no tengo un sistema claro para lograrlos",
+      "total_signals": 412
     },
     "escalar_contenido": {
-      "top_insight": "El mercado está buscando claridad en escalar contenido",
-      "total_signals": 0
+      "top_insight": "Publico contenido todos los días en Instagram y TikTok pero no consigo clientes, solo likes que no pagan cuentas",
+      "total_signals": 394
     },
     "estetica_visual": {
-      "top_insight": "El mercado está buscando claridad en estetica visual",
-      "total_signals": 0
+      "top_insight": "Mi copy es genérico y no conecta emocionalmente con la gente, no genera urgencia ni conversiones",
+      "total_signals": 394
     },
     "ads_convertir": {
-      "top_insight": "El mercado está buscando claridad en ads convertir",
-      "total_signals": 0
+      "top_insight": "Hago campañas de Facebook Ads pero el costo por lead es altísimo y no cierro ventas",
+      "total_signals": 394
     },
     "automatizacion": {
-      "top_insight": "El mercado está buscando claridad en automatizacion",
-      "total_signals": 0
+      "top_insight": "Cada campaña la hago desde cero sin aprovechar lo que funcionó antes porque no documenté nada",
+      "total_signals": 412
+    },
+    "otro_fabrica": {
+      "top_insight": "Invierto horas en crear contenido para redes pero no veo retorno, me siento frustrado",
+      "total_signals": 394
     }
   },
   "metadata": {
-    "generated_at": "2026-02-09T05:55:10.742981",
-    "total_signals": 0,
-    "version": "2.1-granular"
+    "generated_at": "2026-02-09T07:00:00Z",
+    "total_signals": 1442,
+    "total_tactics": 20,
+    "version": "3.0-complete-20-tactics",
+    "mapping": "20 tácticas únicas → 4 'otro' personalizados por servicio",
+    "source": "Investigación web profunda - Reddit, foros SEO, comunidades de marketing",
+    "services": {
+      "posicionamiento": 5,
+      "direccion": 5,
+      "moc": 5,
+      "fabrica": 5
+    },
+    "next_update": "2026-03-09"
   }
 }
