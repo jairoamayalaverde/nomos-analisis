@@ -1,593 +1,73 @@
 {
   "insights": {
-    "Poco Tráfico": {
-      "category_description": "Problemas de visibilidad en Google y búsquedas locales",
-      "signals": [
-        {
-          "text": "Tengo un sitio web hermoso pero nadie lo encuentra en Google, invertí en diseño pero no en posicionamiento",
-          "source": "reddit_r/marketing",
-          "awareness": 45,
-          "urgency": 70
-        },
-        {
-          "text": "Mi negocio no aparece en Google Maps ni siquiera cuando busco por el nombre exacto",
-          "source": "google_my_business_forum",
-          "awareness": 60,
-          "urgency": 85
-        },
-        {
-          "text": "Creé mi ficha de Google My Business hace meses pero sigue sin verificarse y no aparezco en búsquedas locales",
-          "source": "reddit_r/smallbusiness",
-          "awareness": 55,
-          "urgency": 75
-        },
-        {
-          "text": "Estoy en la segunda página de Google que es como no existir, el 90% de usuarios nunca pasan de la primera",
-          "source": "seo_forum",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "No sé qué palabras clave usar y cuando busco servicios como el mío no aparezco ni en las primeras 5 páginas",
-          "source": "quora_marketing",
-          "awareness": 40,
-          "urgency": 65
-        },
-        {
-          "text": "Mi web tarda más de 5 segundos en cargar y Google me está penalizando pero no sé cómo arreglarlo",
-          "source": "webmaster_central",
-          "awareness": 50,
-          "urgency": 70
-        },
-        {
-          "text": "Hice un sitio web desde cero hace 3 meses y Google simplemente no lo indexa, es como si no existiera",
-          "source": "reddit_r/entrepreneur",
-          "awareness": 35,
-          "urgency": 75
-        },
-        {
-          "text": "La información de mi negocio está inconsistente en varios directorios y creo que eso me está afectando",
-          "source": "local_seo_community",
-          "awareness": 65,
-          "urgency": 60
-        },
-        {
-          "text": "No tengo backlinks ni citaciones y mi ficha de Google Maps no tiene autoridad para aparecer en búsquedas",
-          "source": "seo_blog_comments",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "Cambié la ubicación de mi negocio hace 6 meses pero no actualicé mi Google Business y ahora no aparezco",
-          "source": "gmb_support_forum",
-          "awareness": 50,
-          "urgency": 80
-        },
-        {
-          "text": "No tengo ni una sola reseña en Google y veo que eso me hace menos visible que la competencia",
-          "source": "reddit_r/marketing",
-          "awareness": 60,
-          "urgency": 55
-        },
-        {
-          "text": "Saturé mi sitio con muchas palabras clave pensando que ayudaría pero Google me penalizó",
-          "source": "search_console_community",
-          "awareness": 45,
-          "urgency": 70
-        },
-        {
-          "text": "Mi dominio es nuevo y aunque hice todo bien parece que Google tarda meses en darme visibilidad",
-          "source": "reddit_r/seo",
-          "awareness": 55,
-          "urgency": 60
-        },
-        {
-          "text": "No sé si mi sitio está correctamente indexado, cuando hago site:midominio.com aparecen muy pocas páginas",
-          "source": "webmaster_forum",
-          "awareness": 40,
-          "urgency": 65
-        },
-        {
-          "text": "Tengo contenido de calidad pero no sé cómo optimizarlo para que Google lo encuentre y lo posicione",
-          "source": "content_marketing_group",
-          "awareness": 50,
-          "urgency": 60
-        },
-        {
-          "text": "Mi sitio es responsivo y rápido pero igual no aparezco en búsquedas, no entiendo qué más necesito",
-          "source": "reddit_r/webdev",
-          "awareness": 45,
-          "urgency": 70
-        },
-        {
-          "text": "Contraté a alguien para SEO hace 6 meses pero no veo absolutamente ningún resultado todavía",
-          "source": "business_forum",
-          "awareness": 60,
-          "urgency": 85
-        },
-        {
-          "text": "Mi negocio es local pero cuando la gente busca mi servicio en la zona aparecen todos menos yo",
-          "source": "local_business_reddit",
-          "awareness": 65,
-          "urgency": 80
-        },
-        {
-          "text": "No sé cómo hacer que mi chincheta aparezca en Google Maps, hago zoom y no me encuentro",
-          "source": "gmb_help_forum",
-          "awareness": 50,
-          "urgency": 75
-        },
-        {
-          "text": "Tengo una estrategia de contenidos pero nadie encuentra mis artículos en Google cuando buscan esos temas",
-          "source": "blogging_community",
-          "awareness": 55,
-          "urgency": 65
-        }
-      ],
-      "total_signals": 347,
-      "top_insight": "Mi negocio no aparece en Google Maps ni siquiera cuando busco por el nombre exacto"
+    "web_no_convierte": {
+      "top_insight": "El mercado está buscando claridad en web no convierte",
+      "total_signals": 0
     },
-    "Competencia": {
-      "category_description": "Frustración por quedar atrás de competidores en visibilidad digital",
-      "signals": [
-        {
-          "text": "Mi competencia aparece en la primera página de Google y en Google Maps, yo ni siquiera salgo cuando busco mi negocio",
-          "source": "reddit_r/smallbusiness",
-          "awareness": 75,
-          "urgency": 90
-        },
-        {
-          "text": "Busco mi marca en Google y aparecen anuncios de mi competencia encima de mí porque pujan por mi nombre",
-          "source": "google_ads_community",
-          "awareness": 70,
-          "urgency": 85
-        },
-        {
-          "text": "Mi competidor tiene más reseñas y mejores fotos en Google Maps y eso hace que lo elijan a él",
-          "source": "local_seo_forum",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "No sé qué hace mi competencia para posicionar mejor si mi producto es superior al de ellos",
-          "source": "entrepreneur_reddit",
-          "awareness": 60,
-          "urgency": 80
-        },
-        {
-          "text": "La competencia domina las primeras posiciones con palabras clave que yo también debería tener",
-          "source": "seo_analysis_blog",
-          "awareness": 70,
-          "urgency": 75
-        },
-        {
-          "text": "Tengo el mismo tipo de negocio que mi competidor pero él tiene 200 reseñas y yo solo 5",
-          "source": "business_growth_forum",
-          "awareness": 65,
-          "urgency": 70
-        },
-        {
-          "text": "Mi rival usa mi marca en Google Ads y me está robando clientes que me buscan directamente",
-          "source": "digital_marketing_group",
-          "awareness": 75,
-          "urgency": 90
-        },
-        {
-          "text": "La competencia sale en Google Discover más que yo y no sé por qué si publico más contenido",
-          "source": "content_strategy_reddit",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "Cuando la gente busca servicios en mi ciudad aparecen 10 competidores antes que yo en el mapa",
-          "source": "gmb_optimization_forum",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "Mi competidor tiene un blog activo con artículos optimizados y yo no sé ni por dónde empezar",
-          "source": "blogging_reddit",
-          "awareness": 50,
-          "urgency": 60
-        },
-        {
-          "text": "Veo que mi competencia hace link building y tiene autoridad de dominio alta, yo tengo casi cero",
-          "source": "seo_strategy_blog",
-          "awareness": 65,
-          "urgency": 70
-        },
-        {
-          "text": "La edad del dominio de mi competidor le da ventaja y yo con mi sitio nuevo no puedo competir",
-          "source": "webmaster_reddit",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "Mi rival invierte en Google Ads y yo no tengo presupuesto para competir en anuncios pagados",
-          "source": "small_business_forum",
-          "awareness": 60,
-          "urgency": 75
-        },
-        {
-          "text": "La competencia tiene presencia en redes sociales y eso parece ayudarles a posicionar mejor",
-          "source": "social_media_marketing",
-          "awareness": 50,
-          "urgency": 55
-        },
-        {
-          "text": "Hice un análisis de mi competencia y están usando estrategias que ni siquiera conocía que existían",
-          "source": "marketing_analysis_reddit",
-          "awareness": 65,
-          "urgency": 70
-        },
-        {
-          "text": "Mi competidor apareció hace 6 meses y ya está arriba de mí en todas las búsquedas locales",
-          "source": "local_seo_community",
-          "awareness": 70,
-          "urgency": 85
-        },
-        {
-          "text": "Veo que mi rival optimiza cada detalle de su ficha de Google y yo ni sabía que eso importaba",
-          "source": "gmb_best_practices",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "La competencia tiene contenido en video y eso les da más visibilidad en búsquedas que solo texto",
-          "source": "video_marketing_forum",
-          "awareness": 50,
-          "urgency": 60
-        },
-        {
-          "text": "Mi competidor trabaja con influencers locales y eso le genera backlinks y autoridad que yo no tengo",
-          "source": "influencer_marketing_reddit",
-          "awareness": 45,
-          "urgency": 55
-        },
-        {
-          "text": "No puedo competir porque la competencia tiene un equipo de marketing y yo hago todo solo",
-          "source": "solopreneur_community",
-          "awareness": 65,
-          "urgency": 75
-        }
-      ],
-      "total_signals": 289,
-      "top_insight": "Mi competencia aparece en la primera página de Google y en Google Maps, yo ni siquiera salgo cuando busco mi negocio"
+    "autoridad_sector": {
+      "top_insight": "El mercado está buscando claridad en autoridad sector",
+      "total_signals": 0
     },
-    "Técnico": {
-      "category_description": "Falta de sistemas, metodología y capacidad de ejecución sostenida",
-      "signals": [
-        {
-          "text": "Empiezo proyectos de marketing con mucha energía pero a las 3 semanas todo se estanca, necesito un sistema real",
-          "source": "entrepreneur_reddit",
-          "awareness": 70,
-          "urgency": 85
-        },
-        {
-          "text": "Todo depende de mi energía personal y cuando me canso el negocio no avanza, eso no escala",
-          "source": "business_growth_forum",
-          "awareness": 75,
-          "urgency": 80
-        },
-        {
-          "text": "Trabajo apagando fuegos todo el día sin ver que los resultados llegan, me siento frustrado",
-          "source": "small_business_reddit",
-          "awareness": 70,
-          "urgency": 85
-        },
-        {
-          "text": "Tengo muchas ideas brillantes pero falta un plan claro para ejecutarlas de verdad",
-          "source": "startup_community",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "Los objetivos que me marco se hacen eternos porque no sé cuáles son los pasos para lograrlos",
-          "source": "goal_setting_forum",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "No hay un sistema detrás de mi crecimiento, cuando vendo es suerte no estrategia",
-          "source": "sales_reddit",
-          "awareness": 65,
-          "urgency": 80
-        },
-        {
-          "text": "Siento que hago de todo y de nada a la vez, trabajo sin coherencia y termino estresado",
-          "source": "productivity_community",
-          "awareness": 70,
-          "urgency": 75
-        },
-        {
-          "text": "No sé delegar porque todo depende de mí, pero eso me tiene atrapado en el día a día",
-          "source": "leadership_forum",
-          "awareness": 65,
-          "urgency": 80
-        },
-        {
-          "text": "Creé una estrategia hermosa en papel pero cuando llega el momento de ejecutarla nadie la sigue",
-          "source": "marketing_strategy_reddit",
-          "awareness": 70,
-          "urgency": 75
-        },
-        {
-          "text": "Mi negocio creció rápido pero ahora estoy estancado porque no tengo procesos ni sistemas",
-          "source": "scaling_business_blog",
-          "awareness": 75,
-          "urgency": 85
-        },
-        {
-          "text": "Necesito una metodología probada porque improvisar me tiene agotado y sin resultados",
-          "source": "business_methodology_forum",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "Empiezo cosas con entusiasmo pero no tengo la disciplina para sostenerlas más de un mes",
-          "source": "habit_formation_reddit",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "No puedo sistematizar mi negocio porque cada cliente es diferente y termino reinventando todo",
-          "source": "service_business_forum",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "Hago tareas aleatorias sin un plan y al final del mes no sé qué logré realmente",
-          "source": "time_management_community",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "Necesito un framework que me diga qué hacer cada día para avanzar hacia mis objetivos",
-          "source": "productivity_reddit",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "Contrato gente pero no tengo procesos documentados y cada quien hace las cosas diferente",
-          "source": "operations_management_forum",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "No sé medir si estoy avanzando porque no tengo KPIs ni dashboards claros",
-          "source": "business_metrics_reddit",
-          "awareness": 65,
-          "urgency": 70
-        },
-        {
-          "text": "Quiero escalar pero todo pasa por mí y no tengo cómo transferir conocimiento a mi equipo",
-          "source": "team_management_community",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "Mi embudo de ventas está desordenado y pierdo clientes en el camino sin saber exactamente dónde",
-          "source": "sales_funnel_forum",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "No tengo un calendario editorial ni plan de contenidos, publico cuando me acuerdo",
-          "source": "content_strategy_reddit",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "Cada campaña la hago desde cero sin aprovechar lo que funcionó antes porque no documenté nada",
-          "source": "marketing_automation_forum",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "No sé priorizar y termino haciendo cosas urgentes en lugar de cosas importantes",
-          "source": "eisenhower_matrix_community",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "Mi equipo no sabe qué se espera de ellos porque no hay roles ni responsabilidades claras",
-          "source": "hr_management_reddit",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "Invierto en herramientas pero no las uso bien porque no tengo procesos definidos detrás",
-          "source": "saas_tools_forum",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "Me falta constancia, empiezo mil cosas pero no termino nada bien",
-          "source": "focus_discipline_reddit",
-          "awareness": 65,
-          "urgency": 70
-        }
-      ],
-      "total_signals": 412,
-      "top_insight": "Empiezo proyectos de marketing con mucha energía pero a las 3 semanas todo se estanca, necesito un sistema real"
+    "dominio_local": {
+      "top_insight": "El mercado está buscando claridad en dominio local",
+      "total_signals": 0
     },
-    "Baja Conversión": {
-      "category_description": "Esfuerzo en redes sociales y contenido que no se traduce en clientes",
-      "signals": [
-        {
-          "text": "Publico contenido todos los días en Instagram y TikTok pero no consigo clientes, solo likes que no pagan cuentas",
-          "source": "social_media_reddit",
-          "awareness": 75,
-          "urgency": 90
-        },
-        {
-          "text": "Invierto horas en crear contenido para redes pero no veo retorno, me siento frustrado",
-          "source": "content_creators_forum",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "Tengo seguidores en redes sociales pero cuando ofrezco algo nadie compra",
-          "source": "instagram_business_community",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "No sé qué tipo de contenido publicar para atraer clientes de verdad, no solo curiosos",
-          "source": "social_selling_reddit",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "Publico sin estrategia solo por publicar y los resultados son cero",
-          "source": "marketing_strategy_forum",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "Los algoritmos de Facebook e Instagram cambian y mi alcance orgánico se desploma",
-          "source": "social_media_managers",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "Dependo de las redes sociales para vender y cuando cambian las reglas mi negocio se tambalea",
-          "source": "digital_business_reddit",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "No sé responder comentarios negativos y eso me genera crisis pequeñas constantemente",
-          "source": "customer_service_forum",
-          "awareness": 55,
-          "urgency": 70
-        },
-        {
-          "text": "Mi contenido no genera conversaciones ni engagement real, la gente solo scrollea",
-          "source": "content_engagement_community",
-          "awareness": 60,
-          "urgency": 65
-        },
-        {
-          "text": "Hago sorteos y concursos pero atraigo gente que solo quiere gratis y luego desaparecen",
-          "source": "instagram_growth_reddit",
-          "awareness": 65,
-          "urgency": 70
-        },
-        {
-          "text": "No tengo llamadas a la acción claras y la gente ve mi contenido pero no sabe qué hacer después",
-          "source": "conversion_optimization_forum",
-          "awareness": 60,
-          "urgency": 75
-        },
-        {
-          "text": "Publico mucho pero no veo que eso se traduzca en tráfico a mi sitio web o en ventas",
-          "source": "ecommerce_reddit",
-          "awareness": 65,
-          "urgency": 80
-        },
-        {
-          "text": "No sé si mi audiencia en redes es mi cliente ideal o solo gente que le gusta el contenido bonito",
-          "source": "audience_targeting_community",
-          "awareness": 70,
-          "urgency": 75
-        },
-        {
-          "text": "Quiero estar en todas las redes pero no tengo recursos y termino haciendo todo mal",
-          "source": "social_media_strategy_forum",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "Mi web tiene tráfico pero la tasa de conversión es bajísima, no sé qué está fallando",
-          "source": "web_analytics_reddit",
-          "awareness": 70,
-          "urgency": 80
-        },
-        {
-          "text": "Hago campañas de Facebook Ads pero el costo por lead es altísimo y no cierro ventas",
-          "source": "facebook_ads_community",
-          "awareness": 65,
-          "urgency": 85
-        },
-        {
-          "text": "No sé cómo crear un lead magnet que realmente atraiga a mi cliente ideal",
-          "source": "lead_generation_forum",
-          "awareness": 55,
-          "urgency": 70
-        },
-        {
-          "text": "Mi landing page tiene visitas pero la gente se va sin dejar datos ni comprar",
-          "source": "conversion_rate_reddit",
-          "awareness": 65,
-          "urgency": 80
-        },
-        {
-          "text": "No tengo un embudo claro desde el primer contacto hasta la venta y pierdo leads en el camino",
-          "source": "sales_funnel_community",
-          "awareness": 70,
-          "urgency": 75
-        },
-        {
-          "text": "Creo contenido educativo de calidad pero no sé cómo monetizarlo o convertirlo en clientes",
-          "source": "content_monetization_forum",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "Mi copy es genérico y no conecta emocionalmente con la gente, no genera urgencia",
-          "source": "copywriting_reddit",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "No sé cómo hacer seguimiento a los leads que genero y se me enfrían antes de cerrar",
-          "source": "crm_management_community",
-          "awareness": 65,
-          "urgency": 75
-        },
-        {
-          "text": "Tengo email marketing pero nadie abre mis correos y las listas se quedan muertas",
-          "source": "email_marketing_forum",
-          "awareness": 60,
-          "urgency": 70
-        },
-        {
-          "text": "No uso retargeting y pierdo a la gente que visitó mi sitio sin comprar",
-          "source": "digital_ads_reddit",
-          "awareness": 55,
-          "urgency": 65
-        },
-        {
-          "text": "Mi propuesta de valor no está clara y la gente no entiende por qué elegirme a mí",
-          "source": "value_proposition_community",
-          "awareness": 70,
-          "urgency": 80
-        }
-      ],
-      "total_signals": 394,
-      "top_insight": "Publico contenido todos los días en Instagram y TikTok pero no consigo clientes, solo likes que no pagan cuentas"
+    "superar_competencia": {
+      "top_insight": "El mercado está buscando claridad en superar competencia",
+      "total_signals": 0
+    },
+    "ideas_sin_plan": {
+      "top_insight": "El mercado está buscando claridad en ideas sin plan",
+      "total_signals": 0
+    },
+    "proyectos_estancados": {
+      "top_insight": "El mercado está buscando claridad en proyectos estancados",
+      "total_signals": 0
+    },
+    "mensaje_confuso": {
+      "top_insight": "El mercado está buscando claridad en mensaje confuso",
+      "total_signals": 0
+    },
+    "embudo_desordenado": {
+      "top_insight": "El mercado está buscando claridad en embudo desordenado",
+      "total_signals": 0
+    },
+    "marca_no_escala": {
+      "top_insight": "El mercado está buscando claridad en marca no escala",
+      "total_signals": 0
+    },
+    "modernizacion_rapida": {
+      "top_insight": "El mercado está buscando claridad en modernizacion rapida",
+      "total_signals": 0
+    },
+    "metodo_equipo": {
+      "top_insight": "El mercado está buscando claridad en metodo equipo",
+      "total_signals": 0
+    },
+    "servicios_premium": {
+      "top_insight": "El mercado está buscando claridad en servicios premium",
+      "total_signals": 0
+    },
+    "escalar_contenido": {
+      "top_insight": "El mercado está buscando claridad en escalar contenido",
+      "total_signals": 0
+    },
+    "estetica_visual": {
+      "top_insight": "El mercado está buscando claridad en estetica visual",
+      "total_signals": 0
+    },
+    "ads_convertir": {
+      "top_insight": "El mercado está buscando claridad en ads convertir",
+      "total_signals": 0
+    },
+    "automatizacion": {
+      "top_insight": "El mercado está buscando claridad en automatizacion",
+      "total_signals": 0
     }
   },
   "metadata": {
-    "generated_at": "2026-02-09T05:15:00Z",
-    "total_signals": 1442,
-    "version": "2.0-market-research",
-    "methodology": "Web research aggregation from Reddit, forums, Quora, SEO communities, business blogs",
-    "sources": [
-      "reddit.com/r/marketing",
-      "reddit.com/r/smallbusiness",
-      "reddit.com/r/entrepreneur",
-      "support.google.com/business/community",
-      "SEO forums & communities",
-      "Digital marketing blogs",
-      "Business strategy forums",
-      "Social media marketing communities"
-    ],
-    "collection_period": "2024-2026",
-    "language": "Spanish (Latin America)",
-    "target_market": "Small businesses & entrepreneurs Colombia/LATAM",
-    "confidence_level": "High - Based on real user frustrations",
-    "next_update": "Manual refresh recommended monthly"
+    "generated_at": "2026-02-09T05:53:35.440454",
+    "total_signals": 0,
+    "version": "2.1-granular"
   }
 }
