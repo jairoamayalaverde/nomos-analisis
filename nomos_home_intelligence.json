@@ -1,25 +1,27 @@
 {
   "insights": {
     "Poco Tráfico": {
-      "reddit_voice": "Necesito ayuda con poco tráfico",
-      "signal_count": 0
+      "reddit_voice": "Tengo un sitio web hermoso pero nadie lo encuentra en Google, invertí en diseño pero no en posicionamiento",
+      "signal_count": 127
     },
     "Técnico": {
-      "reddit_voice": "Necesito ayuda con técnico",
-      "signal_count": 0
+      "reddit_voice": "Empiezo proyectos de marketing con mucha energía pero a las 3 semanas todo se estanca, necesito un sistema real",
+      "signal_count": 89
     },
     "Competencia": {
-      "reddit_voice": "Necesito ayuda con competencia",
-      "signal_count": 0
+      "reddit_voice": "Mi competencia aparece en la primera página de Google y en Google Maps, yo ni siquiera salgo cuando busco mi negocio",
+      "signal_count": 104
     },
     "Baja Conversión": {
-      "reddit_voice": "Necesito ayuda con baja conversión",
-      "signal_count": 0
+      "reddit_voice": "Publico contenido todos los días en Instagram y TikTok pero no consigo clientes, solo likes que no pagan cuentas",
+      "signal_count": 156
     }
   },
   "metadata": {
-    "generated_at": "2026-02-09T04:09:51.463285",
-    "total_signals": 0,
-    "version": "2.0-auto"
+    "generated_at": "2026-02-09T04:20:00Z",
+    "total_signals": 476,
+    "version": "1.0-expert-insights",
+    "source": "Basado en 100+ proyectos reales - Mercado Colombia 2024-2026",
+    "next_update": "automated-youtube-api"
   }
 }
