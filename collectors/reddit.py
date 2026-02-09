@@ -1,26 +1,18 @@
-import praw
+import requests
 from config import Config
 from datetime import datetime
+import time
 
 class RedditCollector:
     def __init__(self):
-        if not Config.REDDIT_CLIENT_ID or not Config.REDDIT_CLIENT_SECRET:
-            print("⚠️  Reddit not configured, skipping...")
-            self.reddit = None
-            return
-            
-        self.reddit = praw.Reddit(
-            client_id=Config.REDDIT_CLIENT_ID,
-            client_secret=Config.REDDIT_CLIENT_SECRET,
-            user_agent=Config.REDDIT_USER_AGENT
-        )
         self.source_name = 'reddit'
+        # User-Agent para evitar bloqueo
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        }
     
-    def collect(self, limit_per_sub: int = 20) -> list:
-        """Collect from Reddit"""
-        if not self.reddit:
-            return []
-            
+    def collect(self, limit_per_sub: int = 50) -> list:
+        """Collect from Reddit usando endpoint .json público"""
         signals = []
         subreddits = Config.REDDIT_SUBREDDITS
         
@@ -29,34 +21,50 @@ class RedditCollector:
         for sub_name in subreddits:
             try:
                 print(f"  → r/{sub_name}...", end=" ")
-                subreddit = self.reddit.subreddit(sub_name)
+                
+                # Endpoint público .json
+                url = f"https://www.reddit.com/r/{sub_name}/new.json?limit={limit_per_sub}"
+                
+                response = requests.get(url, headers=self.headers, timeout=10)
+                
+                if response.status_code != 200:
+                    print(f"✗ HTTP {response.status_code}")
+                    continue
+                
+                data = response.json()
+                posts = data.get('data', {}).get('children', [])
                 
                 count = 0
-                for post in subreddit.hot(limit=limit_per_sub):
-                    signals.append({
-                        'raw_text': post.title,
-                        'source': self.source_name,
-                        'source_url': f"https://reddit.com{post.permalink}",
-                        'source_metadata': {
-                            'type': 'post_title',
-                            'subreddit': sub_name,
-                            'score': post.score,
-                            'num_comments': post.num_comments
-                        },
-                        'timestamp': datetime.utcnow().isoformat(),
-                        'language': 'es'
-                    })
-                    count += 1
+                for post in posts:
+                    post_data = post.get('data', {})
                     
-                    if post.selftext and len(post.selftext) > 30:
+                    # Post title
+                    if post_data.get('title'):
                         signals.append({
-                            'raw_text': post.selftext[:300],
+                            'raw_text': post_data['title'],
                             'source': self.source_name,
-                            'source_url': f"https://reddit.com{post.permalink}",
+                            'source_url': f"https://reddit.com{post_data.get('permalink', '')}",
+                            'source_metadata': {
+                                'type': 'post_title',
+                                'subreddit': sub_name,
+                                'score': post_data.get('ups', 0),
+                                'num_comments': post_data.get('num_comments', 0)
+                            },
+                            'timestamp': datetime.utcnow().isoformat(),
+                            'language': 'es'
+                        })
+                        count += 1
+                    
+                    # Post body (selftext)
+                    if post_data.get('selftext') and len(post_data['selftext']) > 30:
+                        signals.append({
+                            'raw_text': post_data['selftext'][:500],  # Primeros 500 chars
+                            'source': self.source_name,
+                            'source_url': f"https://reddit.com{post_data.get('permalink', '')}",
                             'source_metadata': {
                                 'type': 'post_body',
                                 'subreddit': sub_name,
-                                'score': post.score
+                                'score': post_data.get('ups', 0)
                             },
                             'timestamp': datetime.utcnow().isoformat(),
                             'language': 'es'
@@ -64,6 +72,7 @@ class RedditCollector:
                         count += 1
                 
                 print(f"✓ {count} signals")
+                time.sleep(2)  # Rate limiting educado
                 
             except Exception as e:
                 print(f"✗ Error: {e}")
