@@ -1,73 +1,73 @@
 {
   "insights": {
     "web_no_convierte": {
-      "top_insight": "El mercado está buscando claridad en web no convierte",
-      "total_signals": 0
+      "top_insight": "Tengo likes y comentarios pero cero clientes",
+      "total_signals": 20
     },
     "autoridad_sector": {
-      "top_insight": "El mercado está buscando claridad en autoridad sector",
-      "total_signals": 0
+      "top_insight": "No aparezco ni buscando mi nombre comercial exacto",
+      "total_signals": 10
     },
     "dominio_local": {
-      "top_insight": "El mercado está buscando claridad en dominio local",
-      "total_signals": 0
+      "top_insight": "Necesito aparecer en búsquedas locales urgente",
+      "total_signals": 13
     },
     "superar_competencia": {
-      "top_insight": "El mercado está buscando claridad en superar competencia",
-      "total_signals": 0
+      "top_insight": "Mi competencia patrocina todo en Google Ads",
+      "total_signals": 24
     },
     "ideas_sin_plan": {
-      "top_insight": "El mercado está buscando claridad en ideas sin plan",
-      "total_signals": 0
+      "top_insight": "Tengo ideas increíbles pero cero disciplina de ejecución",
+      "total_signals": 18
     },
     "proyectos_estancados": {
-      "top_insight": "El mercado está buscando claridad en proyectos estancados",
-      "total_signals": 0
+      "top_insight": "Mi sitio carga lento y nadie espera",
+      "total_signals": 10
     },
     "mensaje_confuso": {
-      "top_insight": "El mercado está buscando claridad en mensaje confuso",
-      "total_signals": 0
+      "top_insight": "Falta urgencia y escasez en mi comunicación",
+      "total_signals": 18
     },
     "embudo_desordenado": {
-      "top_insight": "El mercado está buscando claridad en embudo desordenado",
-      "total_signals": 0
+      "top_insight": "Mi embudo tiene fugas en todas partes",
+      "total_signals": 26
     },
     "marca_no_escala": {
-      "top_insight": "El mercado está buscando claridad en marca no escala",
-      "total_signals": 0
+      "top_insight": "Optimicé keywords sin volumen de búsqueda",
+      "total_signals": 5
     },
     "modernizacion_rapida": {
-      "top_insight": "El mercado está buscando claridad en modernizacion rapida",
-      "total_signals": 0
+      "top_insight": "Necesito igualar o superar su presencia digital urgente",
+      "total_signals": 15
     },
     "metodo_equipo": {
-      "top_insight": "El mercado está buscando claridad en metodo equipo",
-      "total_signals": 0
+      "top_insight": "Mi equipo no sabe qué priorizar y todo es urgente",
+      "total_signals": 31
     },
     "servicios_premium": {
-      "top_insight": "El mercado está buscando claridad en servicios premium",
-      "total_signals": 0
+      "top_insight": "Mi propuesta de valor no es clara aparentemente",
+      "total_signals": 7
     },
     "escalar_contenido": {
-      "top_insight": "El mercado está buscando claridad en escalar contenido",
-      "total_signals": 0
+      "top_insight": "Necesito igualar o superar su presencia digital urgente",
+      "total_signals": 90
     },
     "estetica_visual": {
-      "top_insight": "El mercado está buscando claridad en estetica visual",
-      "total_signals": 0
+      "top_insight": "Invertí en diseño web pero no tengo visitas",
+      "total_signals": 4
     },
     "ads_convertir": {
-      "top_insight": "El mercado está buscando claridad en ads convertir",
-      "total_signals": 0
+      "top_insight": "Tengo Google Business sin reseñas ni visibilidad",
+      "total_signals": 41
     },
     "automatizacion": {
-      "top_insight": "El mercado está buscando claridad en automatizacion",
-      "total_signals": 0
+      "top_insight": "Falta integración entre todas las herramientas",
+      "total_signals": 7
     }
   },
   "metadata": {
-    "generated_at": "2026-02-09T11:37:39.621283",
-    "total_signals": 0,
+    "generated_at": "2026-02-10T11:40:37.953399",
+    "total_signals": 491,
     "version": "2.1-granular"
   }
 }
