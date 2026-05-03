@@ -101,7 +101,7 @@ jobs:
         run: |
           git diff --quiet nomos_home_intelligence.json || echo "changed=true" >> $GITHUB_OUTPUT
       
-      - name: Commit JSON to repo
+      - name: Commit changes
         if: steps.check_changes.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
@@ -113,10 +113,9 @@ jobs:
       
       - name: Push changes
         if: steps.check_changes.outputs.changed == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+        run: |
+          git pull --rebase origin main || true
+          git push origin main
       
       - name: Generate Summary
         if: always()
