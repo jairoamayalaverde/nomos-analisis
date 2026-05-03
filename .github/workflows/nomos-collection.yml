@@ -157,10 +157,4 @@ jobs:
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "*Generated at $(date +'%Y-%m-%d %H:%M:%S UTC')*" >> $GITHUB_STEP_SUMMARY
       
-      - name: Archive collection logs
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: collection-logs
-          path: data/collection_log.json
-          retention-days: 30
+    
