@@ -1,5 +1,5 @@
 from pytrends.request import TrendReq
-from config import Config
+from collectors.config import Config
 from datetime import datetime
 import time
 from typing import List, Dict
