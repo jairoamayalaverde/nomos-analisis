@@ -2,10 +2,8 @@ name: NOMOS Collection & Intelligence v2
 
 on:
   schedule:
-    # Runs daily at 6 AM Colombia time (11 AM UTC)
     - cron: '0 11 * * *'
-  
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:
     inputs:
       source:
         description: 'Collection source'
@@ -25,10 +23,6 @@ jobs:
       contents: write
     
     steps:
-      # ============================================
-      # SETUP
-      # ============================================
-      
       - name: Checkout code
         uses: actions/checkout@v3
       
@@ -50,19 +44,11 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
       
-      # ============================================
-      # COLLECTION - Google Trends
-      # ============================================
-      
       - name: Run Google Trends Collection
         if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'google_trends' }}
         run: |
           python run_collection.py --source google_trends --append
         continue-on-error: true
-      
-      # ============================================
-      # COLLECTION - Reddit
-      # ============================================
       
       - name: Run Reddit Collection
         if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'reddit' }}
@@ -73,58 +59,42 @@ jobs:
           python run_collection.py --source reddit --append
         continue-on-error: true
       
-      # ============================================
-      # INTELLIGENCE GENERATION
-      # ============================================
-      
       - name: Generate Intelligence JSON
         run: |
           python generate_intelligence.py
       
-      # ============================================
-      # VALIDATION
-      # ============================================
-      
       - name: Validate JSON Structure
         run: |
-          python -c "
+          python -c '
           import json
-          import sys
           
-          # Load and validate JSON
-          with open('nomos_home_intelligence.json', 'r') as f:
+          with open("nomos_home_intelligence.json", "r") as f:
               data = json.load(f)
           
-          # Check required fields
-          assert 'insights' in data, 'Missing insights key'
-          assert 'metadata' in data, 'Missing metadata key'
-          assert 'total_signals' in data['metadata'], 'Missing total_signals'
-          assert 'version' in data['metadata'], 'Missing version'
+          assert "insights" in data
+          assert "metadata" in data
+          assert "total_signals" in data["metadata"]
+          assert "version" in data["metadata"]
           
-          # Check all 16 tactics are present
           expected_tactics = [
-              'web_no_convierte', 'autoridad_sector', 'dominio_local', 'superar_competencia',
-              'ideas_sin_plan', 'proyectos_estancados', 'mensaje_confuso', 'embudo_desordenado',
-              'marca_no_escala', 'modernizacion_rapida', 'metodo_equipo', 'servicios_premium',
-              'escalar_contenido', 'estetica_visual', 'ads_convertir', 'automatizacion'
+              "web_no_convierte", "autoridad_sector", "dominio_local", "superar_competencia",
+              "ideas_sin_plan", "proyectos_estancados", "mensaje_confuso", "embudo_desordenado",
+              "marca_no_escala", "modernizacion_rapida", "metodo_equipo", "servicios_premium",
+              "escalar_contenido", "estetica_visual", "ads_convertir", "automatizacion"
           ]
           
           for tactic in expected_tactics:
-              assert tactic in data['insights'], f'Missing tactic: {tactic}'
-              insight = data['insights'][tactic]
-              assert 'top_insight' in insight, f'Missing top_insight for {tactic}'
-              assert 'total_signals' in insight, f'Missing total_signals for {tactic}'
-              assert 'prevalence' in insight, f'Missing prevalence for {tactic}'
-              assert 'diagnosis' in insight, f'Missing diagnosis for {tactic}'
+              assert tactic in data["insights"]
+              insight = data["insights"][tactic]
+              assert "top_insight" in insight
+              assert "total_signals" in insight
+              assert "prevalence" in insight
+              assert "diagnosis" in insight
           
-          print('✅ JSON structure is valid')
-          print(f'✅ Total signals: {data[\"metadata\"][\"total_signals\"]}')
-          print(f'✅ Version: {data[\"metadata\"][\"version\"]}')
-          "
-      
-      # ============================================
-      # COMMIT & PUSH
-      # ============================================
+          print("JSON structure is valid")
+          print(f"Total signals: {data[\"metadata\"][\"total_signals\"]}")
+          print(f"Version: {data[\"metadata\"][\"version\"]}")
+          '
       
       - name: Check for changes
         id: check_changes
@@ -137,8 +107,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "NOMOS Bot"
           git add nomos_home_intelligence.json
-          git add data/raw_signals.json
-          git add data/collection_log.json
+          git add data/raw_signals.json || true
+          git add data/collection_log.json || true
           git commit -m "🧠 Auto-update: Intelligence v4.2 - $(date +'%Y-%m-%d %H:%M UTC')"
       
       - name: Push changes
@@ -147,10 +117,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-      
-      # ============================================
-      # SUMMARY & NOTIFICATIONS
-      # ============================================
       
       - name: Generate Summary
         if: always()
@@ -169,21 +135,20 @@ jobs:
             echo "✅ **Version:** $VERSION" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
-            # Distribution table
             echo "### 📊 Distribution by Tactic" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Tactic | Signals |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|---------|" >> $GITHUB_STEP_SUMMARY
+            
             python -c "
-import json
-data = json.load(open('nomos_home_intelligence.json'))
-insights = data['insights']
-distribution = [(tid, d['total_signals']) for tid, d in insights.items()]
-distribution.sort(key=lambda x: x[1], reverse=True)
-
-print('| Tactic | Signals |')
-print('|--------|---------|')
-for tactic_id, count in distribution[:10]:
-    print(f'| {tactic_id} | {count} |')
-" >> $GITHUB_STEP_SUMMARY
+          import json
+          data = json.load(open('nomos_home_intelligence.json'))
+          insights = data['insights']
+          distribution = [(tid, d['total_signals']) for tid, d in insights.items()]
+          distribution.sort(key=lambda x: x[1], reverse=True)
+          for tactic_id, count in distribution[:10]:
+              print(f'| {tactic_id} | {count} |')
+          " >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **Status:** Failed" >> $GITHUB_STEP_SUMMARY
             echo "❌ Intelligence JSON was not generated" >> $GITHUB_STEP_SUMMARY
@@ -192,10 +157,6 @@ for tactic_id, count in distribution[:10]:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "*Generated at $(date +'%Y-%m-%d %H:%M:%S UTC')*" >> $GITHUB_STEP_SUMMARY
-      
-      # ============================================
-      # CLEANUP (Optional)
-      # ============================================
       
       - name: Archive collection logs
         if: always()
