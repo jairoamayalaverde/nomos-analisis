@@ -1,5 +1,13 @@
-python-dotenv==1.0.0
-supabase>=2.7.0
-pandas==2.2.0
-pytrends==4.9.2
-requests==2.31.0
+# ============================================
+# NOMOS ANÁLISIS - Dependencies v4.2
+# ============================================
+
+# Core
+requests>=2.31.0
+python-dateutil>=2.8.2
+
+# Google Trends
+pytrends>=4.9.2
+
+# Validation
+jsonschema>=4.17.0
