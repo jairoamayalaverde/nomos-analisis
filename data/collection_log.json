@@ -26,5 +26,26 @@
     "signals_collected": 260,
     "status": "success",
     "error": null
+  },
+  {
+    "timestamp": "2026-05-04T08:07:04.249434",
+    "source": "google_trends",
+    "signals_collected": 0,
+    "status": "partial",
+    "error": "No data"
+  },
+  {
+    "timestamp": "2026-05-04T08:07:09.486448",
+    "source": "reddit",
+    "signals_collected": 0,
+    "status": "partial",
+    "error": "Skipped or no data"
+  },
+  {
+    "timestamp": "2026-05-04T08:07:32.035798",
+    "source": "youtube",
+    "signals_collected": 20,
+    "status": "success",
+    "error": null
   }
 ]
