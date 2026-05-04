@@ -117,8 +117,9 @@ jobs:
               assert "diagnosis" in insight
           
           print("JSON structure is valid")
-          print(f"Total signals: {data[\"metadata\"][\"total_signals\"]}")
-          print(f"Version: {data[\"metadata\"][\"version\"]}")
+          metadata = data["metadata"]
+          print("Total signals:", metadata["total_signals"])
+          print("Version:", metadata["version"])
           '
       
       # ============================================
@@ -157,9 +158,9 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f nomos_home_intelligence.json ]; then
-            TOTAL_SIGNALS=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data['metadata']['total_signals'])")
-            VERSION=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data['metadata']['version'])")
-            TACTICS_WITH_DATA=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data['metadata'].get('tactics_with_data', 'N/A'))")
+            TOTAL_SIGNALS=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data.get('metadata', {}).get('total_signals', 0))")
+            VERSION=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data.get('metadata', {}).get('version', 'unknown'))")
+            TACTICS_WITH_DATA=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data.get('metadata', {}).get('tactics_with_data', 'N/A'))")
             
             echo "✅ **Status:** Success" >> $GITHUB_STEP_SUMMARY
             echo "✅ **Total Signals:** $TOTAL_SIGNALS" >> $GITHUB_STEP_SUMMARY
