@@ -14,6 +14,7 @@ on:
           - all
           - google_trends
           - reddit
+          - youtube
 
 jobs:
   collect-and-generate:
@@ -44,11 +45,19 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
       
+      # ============================================
+      # COLLECTION - Google Trends
+      # ============================================
+      
       - name: Run Google Trends Collection
         if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'google_trends' }}
         run: |
           python run_collection.py --source google_trends --append
         continue-on-error: true
+      
+      # ============================================
+      # COLLECTION - Reddit
+      # ============================================
       
       - name: Run Reddit Collection
         if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'reddit' }}
@@ -58,6 +67,22 @@ jobs:
         run: |
           python run_collection.py --source reddit --append
         continue-on-error: true
+      
+      # ============================================
+      # COLLECTION - YouTube
+      # ============================================
+      
+      - name: Run YouTube Collection
+        if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'youtube' }}
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          python run_collection.py --source youtube --append
+        continue-on-error: true
+      
+      # ============================================
+      # INTELLIGENCE GENERATION
+      # ============================================
       
       - name: Generate Intelligence JSON
         run: |
@@ -96,6 +121,10 @@ jobs:
           print(f"Version: {data[\"metadata\"][\"version\"]}")
           '
       
+      # ============================================
+      # COMMIT & PUSH
+      # ============================================
+      
       - name: Check for changes
         id: check_changes
         run: |
@@ -109,7 +138,7 @@ jobs:
           git add nomos_home_intelligence.json
           git add data/raw_signals.json || true
           git add data/collection_log.json || true
-          git commit -m "🧠 Auto-update: Intelligence v4.2 - $(date +'%Y-%m-%d %H:%M UTC')"
+          git commit -m "🧠 Auto-update: Intelligence v4.3 - $(date +'%Y-%m-%d %H:%M UTC')"
       
       - name: Push changes
         if: steps.check_changes.outputs.changed == 'true'
@@ -117,10 +146,14 @@ jobs:
           git pull --rebase origin main || true
           git push origin main
       
+      # ============================================
+      # SUMMARY
+      # ============================================
+      
       - name: Generate Summary
         if: always()
         run: |
-          echo "## 🧠 NOMOS Collection Summary v4.2" >> $GITHUB_STEP_SUMMARY
+          echo "## 🧠 NOMOS Collection Summary v4.3" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f nomos_home_intelligence.json ]; then
@@ -156,5 +189,3 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "*Generated at $(date +'%Y-%m-%d %H:%M:%S UTC')*" >> $GITHUB_STEP_SUMMARY
-      
-    
