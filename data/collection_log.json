@@ -47,5 +47,12 @@
     "signals_collected": 20,
     "status": "success",
     "error": null
+  },
+  {
+    "timestamp": "2026-05-04T08:42:24.229132",
+    "source": "google_trends",
+    "signals_collected": 0,
+    "status": "failed",
+    "error": "GoogleTrendsCollector.__init__() missing 1 required positional argument: 'config'"
   }
 ]
