@@ -1,106 +1,174 @@
 {
   "insights": {
     "web_no_convierte": {
-      "top_insight": "Y si nos seguimos los que estámso comentando? Es una forma de ayudarnos a todos nos ayuda y nos hace falta😊",
-      "total_signals": 23,
-      "prevalence": 19,
-      "diagnosis": "Tienes engagement, pero no un sistema de conversión claro. Por eso cada like, cada comentario, termina sin ingresos. La pregunta no es si funciona... es cuánto dinero estás dejando pasar cada día."
+      "top_insight": "Tienes tráfico pero no conviertes",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tienes engagement, pero no un sistema de conversión claro. Por eso cada like, cada comentario, termina sin ingresos. La pregunta no es si funciona... es cuánto dinero estás dejando pasar cada día.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "autoridad_sector": {
-      "top_insight": "Agarre un carro finaciado, carro salio malo y apens llevo un año con el todavia faltan 3 años salir de la deuda, lo quiero regresar? Ayudame necesito consejos",
-      "total_signals": 18,
-      "prevalence": 15,
-      "diagnosis": "Tu marca no aparece ni cuando la buscan directamente. Eso significa que tu autoridad digital es prácticamente inexistente. Cada búsqueda de tu nombre hoy es una oportunidad que captura otro."
+      "top_insight": "No tienes autoridad visible en tu sector",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tu marca no aparece ni cuando la buscan directamente. Eso significa que tu autoridad digital es prácticamente inexistente. Cada búsqueda de tu nombre hoy es una oportunidad que captura otro.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "dominio_local": {
-      "top_insight": "Amiga buen video, pero veo que solo respondes las felicitaciones y no las preguntas 😅. Ojalá también ayudaras con alguna que otra preguntita saludos.",
-      "total_signals": 8,
-      "prevalence": 6,
-      "diagnosis": "No estás visible en búsquedas locales cuando el cliente está listo para comprar. Tu Google Business está sin optimizar, sin reseñas, sin señales de autoridad. Cada \"cerca de mí\" que no respondes es un cliente que va a tu competencia."
+      "top_insight": "No apareces en búsquedas locales cuando el cliente está listo",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "No estás visible en búsquedas locales cuando el cliente está listo para comprar. Tu Google Business está sin optimizar, sin reseñas, sin señales de autoridad. Cada \"cerca de mí\" que no respondes es un cliente que va a tu competencia.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "superar_competencia": {
-      "top_insight": "Buenas tardes, señorita.<br>Dentro de unos días tendré una entrevista de trabajo y en el cual me indican que estará basado en cuatro puntos.<br>Conocimientos Generales, Capacidad Analítica, Propuesta de Mejora y Habilidades y Competencias.<br>Sobre todo en los tres últimos, ¿Me podria ayudar en las posibles preguntas que me podrian hacer?, por favor. 🙏",
-      "total_signals": 14,
-      "prevalence": 11,
-      "diagnosis": "Tu competencia invierte en visibilidad estratégica mientras tú esperas que el tráfico orgánico llegue solo. Ellos están comprando el mercado que tú intentas ganar gratis. El problema no es su presupuesto... es tu falta de sistema SEO."
+      "top_insight": "Tu competencia te supera en visibilidad digital",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tu competencia invierte en visibilidad estratégica mientras tú esperas que el tráfico orgánico llegue solo. Ellos están comprando el mercado que tú intentas ganar gratis. El problema no es su presupuesto... es tu falta de sistema SEO.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "ideas_sin_plan": {
-      "top_insight": "Hola doctor. Me gustan sus videos. Siento que he desperdiciado casi toda, toda mi juventud. Ahora tengo 31 años y no tengo nada interesante que recordar , no he desarrollado habilidades sociales. Y dependo aún de mis padres. Temo terminar en la indigencia ,¿cómo puedo empezar a &quot;vivir&quot; ? Gracias de antemano",
-      "total_signals": 40,
-      "prevalence": 34,
-      "diagnosis": "Tienes ideas, pero no un sistema que las convierta en ejecución. Por eso empiezas muchas cosas pero terminas pocas. El problema no es la creatividad... es la falta de método para priorizar y ejecutar."
+      "top_insight": "Tienes ideas pero no sistema de ejecución",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tienes ideas, pero no un sistema que las convierta en ejecución. Por eso empiezas muchas cosas pero terminas pocas. El problema no es la creatividad... es la falta de método para priorizar y ejecutar.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "proyectos_estancados": {
-      "top_insight": "Tengo una duda fijate la persona que tengo en la tienda se está cargando una depresión por transporte utilizando su carro cargando por kilómetro. $0.35 me podrías ayudar con ese cálculo lo veo elevado considerando venimos iniciando y nuestras ventas no son muy buenas",
-      "total_signals": 22,
-      "prevalence": 18,
-      "diagnosis": "Arrancas proyectos con energía, pero a las 3 semanas se estancan. Sin un sistema claro de accountability y ejecución, el ciclo se repite. No necesitas más motivación... necesitas estructura."
+      "top_insight": "Empiezas proyectos pero se estancan sin avanzar",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Arrancas proyectos con energía, pero a las 3 semanas se estancan. Sin un sistema claro de accountability y ejecución, el ciclo se repite. No necesitas más motivación... necesitas estructura.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "mensaje_confuso": {
-      "top_insight": "Yo tengo una duda, en mi caso es un cortometraje de concientización sobre la crianza de los niños, precisamente sobre las consecuencias de malas crianza, tipo violencia familiar, negligencias, alcoholismo etc, es un producto de prevención, no una solucion, como podría hacer esto mas acorde a la propuesta de valor?",
-      "total_signals": 7,
-      "prevalence": 5,
-      "diagnosis": "Tu comunicación no genera acción inmediata. El cliente entiende lo que haces, pero no siente urgencia de comprarte ahora. Sin escasez ni urgencia clara, tu propuesta siempre queda \"para después\"."
+      "top_insight": "Tu mensaje no genera urgencia ni claridad",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tu comunicación no genera acción inmediata. El cliente entiende lo que haces, pero no siente urgencia de comprarte ahora. Sin escasez ni urgencia clara, tu propuesta siempre queda \"para después\".",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "embudo_desordenado": {
-      "top_insight": "Te he comenzado a seguir, cómo hago para hacer un seguimiento que no parezca desesperación por la venta?",
-      "total_signals": 18,
-      "prevalence": 15,
-      "diagnosis": "Tu embudo no está roto... está perdiendo dinero en cada etapa. Leads entran, pero no hay un sistema que los convierta en clientes de forma predecible. El problema no es el tráfico... es lo que pasa después."
+      "top_insight": "Tu embudo pierde leads en cada etapa",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tu embudo no está roto... está perdiendo dinero en cada etapa. Leads entran, pero no hay un sistema que los convierta en clientes de forma predecible. El problema no es el tráfico... es lo que pasa después.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "marca_no_escala": {
-      "top_insight": "Gracias Armando por tus consejos y guía 👌",
-      "total_signals": 3,
-      "prevalence": 2,
-      "diagnosis": "Creciste sin sistemas y ahora todo depende de ti. Cada cliente nuevo significa más carga operativa, más horas tuyas. Tu marca no puede crecer sin que tú trabajes más... y ese no es un modelo escalable."
+      "top_insight": "Tu negocio depende de ti y no escala sin más horas tuyas",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Creciste sin sistemas y ahora todo depende de ti. Cada cliente nuevo significa más carga operativa, más horas tuyas. Tu marca no puede crecer sin que tú trabajes más... y ese no es un modelo escalable.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "modernizacion_rapida": {
-      "top_insight": "Hola, saludos desde Costa Rica. Muchas gracias por este aporte tan valioso. He estado buscando Midjorney pero me salen muchos, sin embargo no me sale la que tú estás recomendando. Podrías ayudarme con la dirección?",
-      "total_signals": 7,
-      "prevalence": 5,
-      "diagnosis": "Tu competencia adoptó automatización y sistemas modernos mientras tú sigues con procesos manuales. La brecha de eficiencia crece cada mes. No necesitas más esfuerzo... necesitas herramientas que multipliquen tu capacidad."
+      "top_insight": "Tus procesos son manuales mientras la competencia automatiza",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tu competencia adoptó automatización y sistemas modernos mientras tú sigues con procesos manuales. La brecha de eficiencia crece cada mes. No necesitas más esfuerzo... necesitas herramientas que multipliquen tu capacidad.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "metodo_equipo": {
-      "top_insight": "Acaban de ascenderme como supervisor y piden resultados fuertes... Necesito ayuda y vine a este video ¿Algún consejo extra?",
-      "total_signals": 24,
-      "prevalence": 20,
-      "diagnosis": "Tu equipo ejecuta, pero sin una prioridad clara compartida. Y cuando todo es urgente, nada realmente avanza. No necesitas más esfuerzo de tu gente... necesitas un sistema de decisión que alinee energía con resultados."
+      "top_insight": "Tu equipo no tiene prioridades claras y todo es urgente",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tu equipo ejecuta, pero sin una prioridad clara compartida. Y cuando todo es urgente, nada realmente avanza. No necesitas más esfuerzo de tu gente... necesitas un sistema de decisión que alinee energía con resultados.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "servicios_premium": {
-      "top_insight": "Hola, y si quiero crear una marca completamente de lujo? orgullosamente mexicanana, que el propósito sea darle un propósito al cliente, que debería hacer? Necesito ayuda 🥲",
-      "total_signals": 14,
-      "prevalence": 11,
-      "diagnosis": "Tu propuesta de valor no comunica la transformación real que entregas. Por eso compites por precio en lugar de por resultados. Servicios mal empaquetados atraen clientes que pagan poco y exigen mucho."
+      "top_insight": "Compites por precio en lugar de por valor premium",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tu propuesta de valor no comunica la transformación real que entregas. Por eso compites por precio en lugar de por resultados. Servicios mal empaquetados atraen clientes que pagan poco y exigen mucho.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "escalar_contenido": {
-      "top_insight": "Me gustaría emprender, me puedes ayudar?",
-      "total_signals": 22,
-      "prevalence": 18,
-      "diagnosis": "Estás produciendo contenido, pero sin intención de conversión estratégica. Por eso el esfuerzo no se traduce en leads ni ventas consistentes. Más contenido no es la solución... es dirección comercial en cada pieza."
+      "top_insight": "Produces contenido pero no genera leads ni ventas",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Estás produciendo contenido, pero sin intención de conversión estratégica. Por eso el esfuerzo no se traduce en leads ni ventas consistentes. Más contenido no es la solución... es dirección comercial en cada pieza.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "estetica_visual": {
-      "top_insight": "🔴 ¿Tu negocio NO vende? Descubre aquí por qué 👉🏼 <a href=\" Ingresa al Laboratorio Del Marketing y despega las ventas de tu negocio con marketing de verdad 👉🏼 <a href=\"",
-      "total_signals": 20,
-      "prevalence": 17,
-      "diagnosis": "Invertiste en diseño web, pero priorizaste estética sobre estructura SEO y velocidad de carga. Resultado: una web bonita que nadie encuentra. El problema no es el diseño... es la arquitectura de visibilidad detrás."
+      "top_insight": "Diseño bonito pero sin arquitectura de visibilidad",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Invertiste en diseño web, pero priorizaste estética sobre estructura SEO y velocidad de carga. Resultado: una web bonita que nadie encuentra. El problema no es el diseño... es la arquitectura de visibilidad detrás.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "ads_convertir": {
-      "top_insight": "Hola Felipe. Muy bueno video. Siempre me ha funcionado para abaratar los costos y colectar los datos ayudando al algoritmo subir 1 semana antes de Campaña de COMPRAS una Campaña de compras pero con diferentes eventos (ver contenido, checkout y Add To Cart) ademas para mi nicho ya es un publico bien definido. <br>Pero mucho ahora recomiendan dejar todo en abierto y no gastar mas dinero en por ejemplo como yo hacia antes con ese embudo previo. Que me recomendas?",
-      "total_signals": 15,
-      "prevalence": 12,
-      "diagnosis": "Estás comprando tráfico, pero no tienes un sistema que lo convierta de forma predecible. Por eso el ROI es inconsistente mes a mes. El problema no es la inversión en ads... es la arquitectura de conversión detrás."
+      "top_insight": "Inviertes en ads pero el ROI es bajo o inconsistente",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Estás comprando tráfico, pero no tienes un sistema que lo convierta de forma predecible. Por eso el ROI es inconsistente mes a mes. El problema no es la inversión en ads... es la arquitectura de conversión detrás.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     },
     "automatizacion": {
-      "top_insight": "Hola, comprendí como funciona la automatización, ahora ¿Que programa me ayudara a hacerlo?",
-      "total_signals": 10,
-      "prevalence": 8,
-      "diagnosis": "Tus procesos son manuales y desconectados. Tu equipo está ocupado moviendo información entre herramientas en lugar de crear valor. Sin automatización, estás pagando por trabajo repetitivo que una integración resolvería."
+      "top_insight": "Procesos manuales repetitivos sin integración",
+      "total_signals": 1,
+      "prevalence": 0,
+      "diagnosis": "Tus procesos son manuales y desconectados. Tu equipo está ocupado moviendo información entre herramientas en lugar de crear valor. Sin automatización, estás pagando por trabajo repetitivo que una integración resolvería.",
+      "confidence": 0.7,
+      "sources": [
+        "youtube"
+      ]
     }
   },
   "metadata": {
-    "generated_at": "2026-05-04T07:11:44.408230",
-    "total_signals": 265,
-    "version": "4.2-diagnosis",
-    "tactics_with_data": 16
+    "generated_at": "2026-05-04T07:41:53.944882",
+    "total_signals": 16,
+    "version": "4.4-normalized",
+    "tactics_with_data": 16,
+    "avg_confidence": 0.7,
+    "sources_used": [
+      "youtube"
+    ]
   }
 }
