@@ -1,7 +1,8 @@
 """
-NOMO NORMALIZATION LAYER v4.4
+NOMO NORMALIZATION LAYER v4.4.1
 Convierte señales multi-source (ES + EN) a insights normalizados 100% en español
 Elimina duplicación y calcula confidence por source weight
+FIX: Deduplicación por input_raw (no por normalized_insight)
 """
 import re
 from typing import Dict, List, Optional
@@ -385,13 +386,24 @@ class SignalNormalizer:
     
     def deduplicate_by_normalized(self, normalized_signals: List[Dict]) -> List[Dict]:
         """
-        Elimina duplicados basándose en normalized_insight (español)
-        Mantiene la señal con mayor confidence
+        Elimina duplicados basándose en el TEXTO CRUDO (input_raw)
+        
+        IMPORTANTE: NO deduplicar por normalized_insight porque muchas señales
+        distintas normalizan al mismo insight. Ejemplo:
+        - "tengo visitas pero no ventas"
+        - "mucho tráfico cero clientes"
+        - "traffic but no sales"
+        → Todas normalizan a "Tienes tráfico pero no conviertes"
+        
+        Si deduplicamos por normalized_insight, 45 señales colapsan a 1.
+        En cambio, deduplicamos por input_raw para mantener señales únicas.
         """
         seen = {}
         
         for signal in normalized_signals:
-            key = signal['normalized_insight']
+            # Usar primeros 100 caracteres del input_raw como key
+            # Esto elimina duplicados EXACTOS pero mantiene variaciones
+            key = signal['input_raw'][:100].lower().strip()
             
             if key not in seen:
                 seen[key] = signal
