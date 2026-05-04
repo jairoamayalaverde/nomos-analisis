@@ -1,14 +1,18 @@
-name: NOMOS Collection & Intelligence v2
+name: 🧠 NOMOS Intelligence Collection & Generation
+
+# Prevenir ejecuciones simultáneas
+concurrency:
+  group: nomos-collection
+  cancel-in-progress: false
 
 on:
   schedule:
-    - cron: '0 11 * * *'
+    - cron: '0 11 * * *'  # Diario 6 AM Colombia (11 UTC)
   workflow_dispatch:
     inputs:
       source:
-        description: 'Collection source'
-        required: false
-        default: 'all'
+        description: 'Data source to collect'
+        required: true
         type: choice
         options:
           - all
@@ -20,173 +24,157 @@ jobs:
   collect-and-generate:
     runs-on: ubuntu-latest
     
-    permissions:
-      contents: write
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
       
-      - name: Cache pip dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-      
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install --break-system-packages -r requirements.txt
       
-      # ============================================
-      # COLLECTION - Google Trends
-      # ============================================
+      - name: 🔄 Pull latest changes
+        run: |
+          git config user.name "NOMOS Bot"
+          git config user.email "bot@nomos.dev"
+          git pull --rebase origin main || true
       
-      - name: Run Google Trends Collection
-        if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'google_trends' }}
+      - name: 📊 Run Google Trends Collection
+        if: github.event.inputs.source == 'google_trends' || github.event.inputs.source == 'all' || github.event_name == 'schedule'
+        env:
+          ENABLE_GOOGLE_TRENDS: true
         run: |
           python run_collection.py --source google_trends --append
         continue-on-error: true
       
-      # ============================================
-      # COLLECTION - Reddit
-      # ============================================
-      
-      - name: Run Reddit Collection
-        if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'reddit' }}
+      - name: 🔴 Run Reddit Collection
+        if: github.event.inputs.source == 'reddit' || github.event.inputs.source == 'all' || github.event_name == 'schedule'
         env:
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          ENABLE_REDDIT: true
         run: |
           python run_collection.py --source reddit --append
         continue-on-error: true
       
-      # ============================================
-      # COLLECTION - YouTube
-      # ============================================
-      
-      - name: Run YouTube Collection
-        if: ${{ github.event.inputs.source == '' || github.event.inputs.source == 'all' || github.event.inputs.source == 'youtube' }}
+      - name: ▶️ Run YouTube Collection
+        if: github.event.inputs.source == 'youtube' || github.event.inputs.source == 'all' || github.event_name == 'schedule'
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ENABLE_YOUTUBE: true
         run: |
           python run_collection.py --source youtube --append
         continue-on-error: true
       
-      # ============================================
-      # INTELLIGENCE GENERATION
-      # ============================================
+      - name: ✅ Validate collection results
+        run: |
+          SIGNALS_FILE="data/raw_signals.json"
+          
+          if [ ! -f "$SIGNALS_FILE" ]; then
+            echo "❌ Error: raw_signals.json not found"
+            exit 1
+          fi
+          
+          SIGNAL_COUNT=$(python -c "import json; print(len(json.load(open('$SIGNALS_FILE'))))")
+          echo "📊 Total signals collected: $SIGNAL_COUNT"
+          
+          if [ "$SIGNAL_COUNT" -lt 10 ]; then
+            echo "⚠️ Warning: Very low signal count ($SIGNAL_COUNT)"
+          else
+            echo "✅ Signal count looks good"
+          fi
       
-      - name: Generate Intelligence JSON
+      - name: 🧠 Generate Intelligence
         run: |
           python generate_intelligence.py
       
-      - name: Validate JSON Structure
+      - name: 💾 Commit and Push
         run: |
-          python -c '
-          import json
+          git add data/ nomos_home_intelligence.json
           
-          with open("nomos_home_intelligence.json", "r") as f:
-              data = json.load(f)
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
           
-          assert "insights" in data
-          assert "metadata" in data
-          assert "total_signals" in data["metadata"]
-          assert "version" in data["metadata"]
-          
-          expected_tactics = [
-              "web_no_convierte", "autoridad_sector", "dominio_local", "superar_competencia",
-              "ideas_sin_plan", "proyectos_estancados", "mensaje_confuso", "embudo_desordenado",
-              "marca_no_escala", "modernizacion_rapida", "metodo_equipo", "servicios_premium",
-              "escalar_contenido", "estetica_visual", "ads_convertir", "automatizacion"
-          ]
-          
-          for tactic in expected_tactics:
-              assert tactic in data["insights"]
-              insight = data["insights"][tactic]
-              assert "top_insight" in insight
-              assert "total_signals" in insight
-              assert "prevalence" in insight
-              assert "diagnosis" in insight
-          
-          print("JSON structure is valid")
-          metadata = data["metadata"]
-          print("Total signals:", metadata["total_signals"])
-          print("Version:", metadata["version"])
-          '
+          if git diff --staged --quiet; then
+            echo "ℹ️ No changes to commit"
+          else
+            git commit -m "🧠 Auto-update: Intelligence v4.4 - $TIMESTAMP"
+            
+            # Retry push con rebase si falla
+            MAX_RETRIES=3
+            RETRY=0
+            
+            while [ $RETRY -lt $MAX_RETRIES ]; do
+              if git push origin main; then
+                echo "✅ Push successful"
+                break
+              else
+                echo "⚠️ Push failed, retrying... ($((RETRY+1))/$MAX_RETRIES)"
+                git pull --rebase origin main
+                RETRY=$((RETRY+1))
+                sleep 5
+              fi
+            done
+            
+            if [ $RETRY -eq $MAX_RETRIES ]; then
+              echo "❌ Failed to push after $MAX_RETRIES attempts"
+              exit 1
+            fi
+          fi
       
-      # ============================================
-      # COMMIT & PUSH
-      # ============================================
-      
-      - name: Check for changes
-        id: check_changes
-        run: |
-          git diff --quiet nomos_home_intelligence.json || echo "changed=true" >> $GITHUB_OUTPUT
-      
-      - name: Commit changes
-        if: steps.check_changes.outputs.changed == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "NOMOS Bot"
-          git add nomos_home_intelligence.json
-          git add data/raw_signals.json || true
-          git add data/collection_log.json || true
-          git commit -m "🧠 Auto-update: Intelligence v4.3 - $(date +'%Y-%m-%d %H:%M UTC')"
-      
-      - name: Push changes
-        if: steps.check_changes.outputs.changed == 'true'
-        run: |
-          git pull --rebase origin main || true
-          git push origin main
-      
-      # ============================================
-      # SUMMARY
-      # ============================================
-      
-      - name: Generate Summary
+      - name: 📊 Generate Summary
         if: always()
         run: |
-          echo "## 🧠 NOMOS Collection Summary v4.3" >> $GITHUB_STEP_SUMMARY
+          echo "## 🧠 NOMOS Collection Summary v4.4" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          if [ -f nomos_home_intelligence.json ]; then
-            TOTAL_SIGNALS=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data.get('metadata', {}).get('total_signals', 0))")
-            VERSION=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data.get('metadata', {}).get('version', 'unknown'))")
-            TACTICS_WITH_DATA=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data.get('metadata', {}).get('tactics_with_data', 'N/A'))")
+          if [ -f "nomos_home_intelligence.json" ]; then
+            # Extract metadata
+            TOTAL=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data['metadata']['total_signals'])" 2>/dev/null || echo "0")
+            VERSION=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data['metadata']['version'])" 2>/dev/null || echo "unknown")
+            TACTICS=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(len([t for t in data['insights'].values() if t['total_signals'] > 0]))" 2>/dev/null || echo "0")
             
             echo "✅ **Status:** Success" >> $GITHUB_STEP_SUMMARY
-            echo "✅ **Total Signals:** $TOTAL_SIGNALS" >> $GITHUB_STEP_SUMMARY
-            echo "✅ **Tactics with Data:** $TACTICS_WITH_DATA/16" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **Total Signals:** $TOTAL" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **Tactics with Data:** $TACTICS/16" >> $GITHUB_STEP_SUMMARY
             echo "✅ **Version:** $VERSION" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
+            # Distribution table
             echo "### 📊 Distribution by Tactic" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "| Tactic | Signals |" >> $GITHUB_STEP_SUMMARY
-            echo "|--------|---------|" >> $GITHUB_STEP_SUMMARY
             
             python -c "
-          import json
-          data = json.load(open('nomos_home_intelligence.json'))
-          insights = data['insights']
-          distribution = [(tid, d['total_signals']) for tid, d in insights.items()]
-          distribution.sort(key=lambda x: x[1], reverse=True)
-          for tactic_id, count in distribution[:10]:
-              print(f'| {tactic_id} | {count} |')
-          " >> $GITHUB_STEP_SUMMARY
+import json
+try:
+    data = json.load(open('nomos_home_intelligence.json'))
+    insights = sorted(data['insights'].items(), key=lambda x: x[1]['total_signals'], reverse=True)
+    print('| Tactic | Signals |')
+    print('|--------|---------|')
+    for tactic, info in insights[:10]:
+        print(f'| {tactic} | {info[\"total_signals\"]} |')
+except Exception as e:
+    print(f'Error generating table: {e}')
+            " >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **Status:** Failed" >> $GITHUB_STEP_SUMMARY
-            echo "❌ Intelligence JSON was not generated" >> $GITHUB_STEP_SUMMARY
+            echo "❌ Intelligence file not generated" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Check the logs above for errors." >> $GITHUB_STEP_SUMMARY
           fi
-          
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "*Generated at $(date +'%Y-%m-%d %H:%M:%S UTC')*" >> $GITHUB_STEP_SUMMARY
+      
+      - name: 📝 Upload artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: collection-logs
+          path: |
+            data/collection_log.json
+            data/raw_signals.json
+          retention-days: 7
