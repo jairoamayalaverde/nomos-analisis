@@ -1,16 +1,23 @@
 #!/usr/bin/env python3
 """
-NOMO Intelligence Engine v4.2
-Generates intelligence JSON with cognitive diagnoses
-NO Supabase dependency - uses local signals
+NOMO Intelligence Engine v4.4
+Generates intelligence JSON with:
+- Semantic normalization (ES + EN → ES)
+- Source weighting (Reddit 1.0, YouTube 0.7, Trends 0.5)
+- Weighted prevalence
+- Confidence scoring
+- Multi-source detection
 """
 
 import json
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Tuple
 from collections import Counter
+
+# Import normalizer
+from collectors.normalizer import SignalNormalizer
 
 # ============================================
 # CONFIGURATION
@@ -63,14 +70,6 @@ COGNITIVE_DIAGNOSES = {
 # HELPER FUNCTIONS
 # ============================================
 
-def clean_text(text: str) -> str:
-    """Clean and normalize text"""
-    # Remove URLs
-    text = re.sub(r'http\S+', '', text)
-    # Normalize whitespace
-    text = ' '.join(text.split())
-    return text.strip()
-
 def load_signals() -> List[Dict]:
     """Load signals from JSON file"""
     if not Path(SIGNALS_FILE).exists():
@@ -80,80 +79,78 @@ def load_signals() -> List[Dict]:
     try:
         with open(SIGNALS_FILE, 'r', encoding='utf-8') as f:
             signals = json.load(f)
-        print(f"📂 Loaded {len(signals)} signals from {SIGNALS_FILE}")
+        print(f"📂 Loaded {len(signals)} raw signals from {SIGNALS_FILE}")
         return signals
     except Exception as e:
         print(f"❌ Error loading signals: {e}")
         return []
 
-def extract_best_insight(signals: List[Dict], max_length: int = 110) -> str:
+def normalize_signals(raw_signals: List[Dict]) -> Tuple[List[Dict], Dict]:
     """
-    Extract the most representative phrase with priority on pain points
+    Normalize signals using SignalNormalizer
     
-    Prioritizes:
-    1. Questions (active pain)
-    2. First person (real friction)
-    3. Ideal length for wizard card
+    Returns:
+        Tuple of (normalized_signals, stats)
     """
-    candidates = []
+    print("\n🔄 Normalizing signals...")
+    normalizer = SignalNormalizer()
+    
+    normalized = []
+    for signal in raw_signals:
+        try:
+            norm_signal = normalizer.normalize(signal)
+            normalized.append(norm_signal)
+        except Exception as e:
+            print(f"⚠️  Error normalizing signal: {e}")
+            continue
+    
+    # Deduplicate by normalized_insight
+    print(f"   Before deduplication: {len(normalized)} signals")
+    unique_normalized = normalizer.deduplicate_by_normalized(normalized)
+    print(f"   After deduplication: {len(unique_normalized)} unique signals")
+    
+    # Stats
+    stats = {
+        'raw_count': len(raw_signals),
+        'normalized_count': len(normalized),
+        'unique_count': len(unique_normalized),
+        'deduplication_rate': round((1 - len(unique_normalized) / len(normalized)) * 100, 1) if normalized else 0
+    }
+    
+    return unique_normalized, stats
+
+def count_sources_by_tactic(signals: List[Dict]) -> Dict[str, List[str]]:
+    """
+    Count unique sources per tactic
+    
+    Returns:
+        Dict[tactic_id, list of sources]
+    """
+    sources_by_tactic = {}
     
     for signal in signals:
-        text = clean_text(signal['raw_text'])
+        tactic_id = signal.get('tactic_id')
+        source = signal.get('source')
         
-        # Skip if too short
-        if len(text) < 20:
-            continue
+        if tactic_id not in sources_by_tactic:
+            sources_by_tactic[tactic_id] = set()
         
-        # Calculate score
-        score = 0
-        
-        # Priority 1: Questions (Active pain)
-        if '?' in text:
-            score += 10
-        
-        # Priority 2: First person (Real friction)
-        first_person_words = ['mi', 'tengo', 'estoy', 'necesito', 'siento', 'no puedo', 'me falta']
-        if any(word in text.lower() for word in first_person_words):
-            score += 5
-        
-        # Priority 3: Negation (Problems)
-        negation_words = ['no ', 'sin ', 'falta', 'poco', 'cero']
-        if any(word in text.lower() for word in negation_words):
-            score += 3
-        
-        # Priority 4: Ideal length
-        if 30 < len(text) < max_length:
-            score += 2
-        
-        # Priority 5: Source quality (Reddit/Google Trends)
-        source = signal.get('source', '')
-        if source == 'google_trends':
-            score += 1  # Prefer Google Trends (Spanish, Colombia-specific)
-        
-        candidates.append((text, score))
+        sources_by_tactic[tactic_id].add(source)
     
-    if not candidates:
-        return None
-    
-    # Sort by score and return best
-    candidates.sort(key=lambda x: x[1], reverse=True)
-    return candidates[0][0]
+    # Convert sets to sorted lists
+    return {k: sorted(list(v)) for k, v in sources_by_tactic.items()}
 
-def calculate_prevalence(total_signals: int) -> int:
-    """
-    Calculate prevalence (how many of N businesses report this)
+def calculate_avg_confidence(signals: List[Dict]) -> float:
+    """Calculate average confidence for a set of signals"""
+    if not signals:
+        return 0.0
     
-    Uses ~85% as baseline
-    """
-    if total_signals == 0:
-        return 0
-    
-    prevalence = int(total_signals * 0.85)
-    return max(1, prevalence)  # At least 1
+    confidences = [s.get('confidence', 0.5) for s in signals]
+    return round(sum(confidences) / len(confidences), 2)
 
-def generate_intelligence(signals: List[Dict]) -> Dict:
+def generate_intelligence(normalized_signals: List[Dict]) -> Dict:
     """
-    Generate intelligence JSON from signals
+    Generate intelligence JSON from normalized signals
     
     Returns:
         Dict with insights and metadata
@@ -161,17 +158,22 @@ def generate_intelligence(signals: List[Dict]) -> Dict:
     print("\n🧠 Generating intelligence by tactic...")
     print("="*60)
     
+    normalizer = SignalNormalizer()
+    
     # Group signals by tactic_id
     signals_by_tactic = {}
-    for signal in signals:
+    for signal in normalized_signals:
         tactic_id = signal.get('tactic_id')
         if not tactic_id:
-            continue  # Skip signals without tactic_id
+            continue
         
         if tactic_id not in signals_by_tactic:
             signals_by_tactic[tactic_id] = []
         
         signals_by_tactic[tactic_id].append(signal)
+    
+    # Count sources
+    sources_by_tactic = count_sources_by_tactic(normalized_signals)
     
     # Generate insights for each tactic
     insights = {}
@@ -179,41 +181,53 @@ def generate_intelligence(signals: List[Dict]) -> Dict:
     for tactic_id in COGNITIVE_DIAGNOSES.keys():
         tactic_signals = signals_by_tactic.get(tactic_id, [])
         
-        # Extract best insight
-        best_insight = extract_best_insight(tactic_signals)
+        # Get top insight (normalized, español)
+        if tactic_signals:
+            # Sort by confidence and get top
+            tactic_signals.sort(key=lambda x: x.get('confidence', 0), reverse=True)
+            top_insight = tactic_signals[0]['normalized_insight']
+        else:
+            top_insight = f"Necesito optimizar {tactic_id.replace('_', ' ')}"
         
         # Calculate metrics
         total_signals = len(tactic_signals)
-        prevalence = calculate_prevalence(total_signals)
         
-        # Get diagnosis
+        # Weighted prevalence
+        prevalence = int(normalizer.calculate_weighted_prevalence(tactic_signals))
+        
+        # Average confidence
+        avg_confidence = calculate_avg_confidence(tactic_signals)
+        
+        # Sources
+        sources = sources_by_tactic.get(tactic_id, [])
+        
+        # Diagnosis
         diagnosis = COGNITIVE_DIAGNOSES.get(tactic_id, "")
         
-        if best_insight:
-            insights[tactic_id] = {
-                "top_insight": best_insight,
-                "total_signals": total_signals,
-                "prevalence": prevalence,
-                "diagnosis": diagnosis
-            }
-            print(f"✅ {tactic_id}: {total_signals} signals → \"{best_insight[:50]}...\"")
+        insights[tactic_id] = {
+            "top_insight": top_insight,
+            "total_signals": total_signals,
+            "prevalence": prevalence,
+            "diagnosis": diagnosis,
+            "confidence": avg_confidence,
+            "sources": sources
+        }
+        
+        if total_signals > 0:
+            sources_str = ", ".join(sources) if sources else "N/A"
+            print(f"✅ {tactic_id}: {total_signals} signals | conf: {avg_confidence} | sources: {sources_str}")
+            print(f"   → \"{top_insight[:70]}...\"")
         else:
-            # Fallback for tactics without signals
-            fallback_insight = f"Necesito optimizar {tactic_id.replace('_', ' ')}"
-            insights[tactic_id] = {
-                "top_insight": fallback_insight,
-                "total_signals": 0,
-                "prevalence": 0,
-                "diagnosis": diagnosis
-            }
             print(f"⚠️  {tactic_id}: No signals (using fallback)")
     
     # Generate metadata
     metadata = {
         "generated_at": datetime.utcnow().isoformat(),
-        "total_signals": len(signals),
-        "version": "4.2-diagnosis",
-        "tactics_with_data": len([t for t in insights.values() if t['total_signals'] > 0])
+        "total_signals": len(normalized_signals),
+        "version": "4.4-normalized",
+        "tactics_with_data": len([t for t in insights.values() if t['total_signals'] > 0]),
+        "avg_confidence": calculate_avg_confidence(normalized_signals),
+        "sources_used": sorted(list(set([s.get('source') for s in normalized_signals])))
     }
     
     return {
@@ -231,26 +245,32 @@ def save_intelligence(intelligence: Dict):
         print(f"\n❌ Error saving JSON: {e}")
         raise
 
-def print_summary(intelligence: Dict):
+def print_summary(intelligence: Dict, norm_stats: Dict):
     """Print generation summary"""
     metadata = intelligence['metadata']
     insights = intelligence['insights']
     
     print("\n" + "="*60)
-    print("GENERATION SUMMARY")
+    print("GENERATION SUMMARY v4.4")
     print("="*60)
-    print(f"Total signals processed: {metadata['total_signals']}")
+    print(f"Raw signals: {norm_stats['raw_count']}")
+    print(f"After normalization: {norm_stats['normalized_count']}")
+    print(f"After deduplication: {norm_stats['unique_count']} ({norm_stats['deduplication_rate']}% removed)")
     print(f"Tactics with data: {metadata['tactics_with_data']}/16")
+    print(f"Average confidence: {metadata['avg_confidence']}")
+    print(f"Sources: {', '.join(metadata['sources_used'])}")
     print(f"Version: {metadata['version']}")
-    print(f"Generated at: {metadata['generated_at']}")
     
     # Distribution
-    print("\n📊 DISTRIBUTION BY TACTIC:")
+    print("\n📊 DISTRIBUTION BY TACTIC (Top 10):")
     distribution = [(tid, data['total_signals']) for tid, data in insights.items()]
     distribution.sort(key=lambda x: x[1], reverse=True)
     
-    for tactic_id, count in distribution[:5]:  # Top 5
-        print(f"  {tactic_id}: {count} signals")
+    for tactic_id, count in distribution[:10]:
+        conf = insights[tactic_id]['confidence']
+        sources = insights[tactic_id]['sources']
+        sources_str = ", ".join(sources) if sources else "N/A"
+        print(f"  {tactic_id}: {count} signals | conf: {conf} | [{sources_str}]")
     
     print("="*60 + "\n")
 
@@ -260,25 +280,32 @@ def print_summary(intelligence: Dict):
 
 def main():
     print("\n" + "="*60)
-    print("NOMO INTELLIGENCE ENGINE v4.2")
-    print("Cognitive Diagnosis Generation")
+    print("NOMO INTELLIGENCE ENGINE v4.4")
+    print("Normalization + Weighted Prevalence + Multi-Source")
     print("="*60)
     
-    # Load signals
-    signals = load_signals()
+    # Load raw signals
+    raw_signals = load_signals()
     
-    if not signals:
+    if not raw_signals:
         print("❌ No signals found. Run collection first.")
         return
     
+    # Normalize signals
+    normalized_signals, norm_stats = normalize_signals(raw_signals)
+    
+    if not normalized_signals:
+        print("❌ No signals after normalization.")
+        return
+    
     # Generate intelligence
-    intelligence = generate_intelligence(signals)
+    intelligence = generate_intelligence(normalized_signals)
     
     # Save to file
     save_intelligence(intelligence)
     
     # Print summary
-    print_summary(intelligence)
+    print_summary(intelligence, norm_stats)
 
 if __name__ == "__main__":
     main()
