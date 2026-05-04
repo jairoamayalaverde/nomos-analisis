@@ -13,7 +13,7 @@ import argparse
 
 from collectors.google_trends import GoogleTrendsCollector
 from collectors.reddit import RedditCollector
-from collectors.youtube import YouTubeCollector 
+from collectors.youtube import YouTubeCollector
 
 # ============================================
 # CONFIGURATION
@@ -103,7 +103,7 @@ def collect_from_source(source: str) -> List[Dict]:
     Collect signals from specified source
     
     Args:
-        source: 'google_trends' or 'reddit'
+        source: 'google_trends', 'reddit', or 'youtube'
     
     Returns:
         List of collected signals
@@ -144,6 +144,26 @@ def collect_from_source(source: str) -> List[Dict]:
             print(f"\n❌ Error: {e}")
             log_collection('reddit', 0, 'failed', str(e))
     
+    elif source == 'youtube':
+        print("\n[YOUTUBE]")
+        print("-" * 60)
+        try:
+            collector = YouTubeCollector()
+            signals = collector.collect(
+                videos_per_query=5,
+                comments_per_video=30
+            )
+            
+            if signals:
+                log_collection('youtube', len(signals), 'success')
+            else:
+                print("\n⚠️  No signals collected")
+                log_collection('youtube', 0, 'partial', 'No data')
+                
+        except Exception as e:
+            print(f"\n❌ Error: {e}")
+            log_collection('youtube', 0, 'failed', str(e))
+    
     else:
         print(f"❌ Unknown source: {source}")
     
@@ -152,7 +172,7 @@ def collect_from_source(source: str) -> List[Dict]:
 def main():
     parser = argparse.ArgumentParser(description='NOMOS Collection Script')
     parser.add_argument('--source', 
-                       choices=['google_trends', 'reddit', 'all'],
+                       choices=['google_trends', 'reddit', 'youtube', 'all'],
                        default='all',
                        help='Source to collect from')
     parser.add_argument('--append', 
@@ -178,6 +198,10 @@ def main():
     
     if args.source in ['reddit', 'all']:
         signals = collect_from_source('reddit')
+        all_new_signals.extend(signals)
+    
+    if args.source in ['youtube', 'all']:
+        signals = collect_from_source('youtube')
         all_new_signals.extend(signals)
     
     # Merge with existing signals if append mode
