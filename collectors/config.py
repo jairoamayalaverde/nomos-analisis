@@ -19,6 +19,7 @@ class Config:
     # ============================================
     ENABLE_GOOGLE_TRENDS = True
     ENABLE_REDDIT = True  # ← Ahora activado
+    ENABLE_YOUTUBE = True
     
     # ============================================
     # GOOGLE TRENDS - KEYWORDS POR TACTIC
@@ -393,3 +394,8 @@ class Config:
     # Google Trends
     GOOGLE_TRENDS_TIMEFRAME = "today 3-m"  # 3 meses
     GOOGLE_TRENDS_GEO = "CO"  # Colombia
+    
+    # ============================================
+    # YOUTUBE DATA API v3
+    # ============================================
+    YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
