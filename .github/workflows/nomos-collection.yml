@@ -1,13 +1,13 @@
 name: 🧠 NOMOS Intelligence Collection & Generation
 
-# Prevenir ejecuciones simultáneas
+# ⭐ AGREGAR ESTO AL INICIO
 concurrency:
   group: nomos-collection
   cancel-in-progress: false
 
 on:
   schedule:
-    - cron: '0 11 * * *'  # Diario 6 AM Colombia (11 UTC)
+    - cron: '0 11 * * *'
   workflow_dispatch:
     inputs:
       source:
@@ -104,7 +104,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "ℹ️ No changes to commit"
           else
-            git commit -m "🧠 Auto-update: Intelligence v4.4 - $TIMESTAMP"
+            git commit -m "🧠 Auto-update: Intelligence v4.5 - $TIMESTAMP"
             
             # Retry push con rebase si falla
             MAX_RETRIES=3
@@ -131,11 +131,10 @@ jobs:
       - name: 📊 Generate Summary
         if: always()
         run: |
-          echo "## 🧠 NOMOS Collection Summary v4.4" >> $GITHUB_STEP_SUMMARY
+          echo "## 🧠 NOMOS Collection Summary v4.5" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f "nomos_home_intelligence.json" ]; then
-            # Extract metadata
             TOTAL=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data['metadata']['total_signals'])" 2>/dev/null || echo "0")
             VERSION=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(data['metadata']['version'])" 2>/dev/null || echo "unknown")
             TACTICS=$(python -c "import json; data=json.load(open('nomos_home_intelligence.json')); print(len([t for t in data['insights'].values() if t['total_signals'] > 0]))" 2>/dev/null || echo "0")
@@ -146,7 +145,6 @@ jobs:
             echo "✅ **Version:** $VERSION" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
-            # Distribution table
             echo "### 📊 Distribution by Tactic" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             
@@ -165,8 +163,6 @@ except Exception as e:
           else
             echo "❌ **Status:** Failed" >> $GITHUB_STEP_SUMMARY
             echo "❌ Intelligence file not generated" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Check the logs above for errors." >> $GITHUB_STEP_SUMMARY
           fi
       
       - name: 📝 Upload artifacts on failure
