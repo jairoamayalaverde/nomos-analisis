@@ -13,6 +13,7 @@ import argparse
 
 from collectors.google_trends import GoogleTrendsCollector
 from collectors.reddit import RedditCollector
+from collectors.youtube import YouTubeCollector 
 
 # ============================================
 # CONFIGURATION
