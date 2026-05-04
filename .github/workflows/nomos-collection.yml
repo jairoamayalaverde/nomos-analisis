@@ -1,6 +1,5 @@
 name: 🧠 NOMOS Intelligence Collection & Generation
 
-# ⭐ AGREGAR ESTO AL INICIO
 concurrency:
   group: nomos-collection
   cancel-in-progress: false
@@ -106,7 +105,6 @@ jobs:
           else
             git commit -m "🧠 Auto-update: Intelligence v4.5 - $TIMESTAMP"
             
-            # Retry push con rebase si falla
             MAX_RETRIES=3
             RETRY=0
             
@@ -143,23 +141,6 @@ jobs:
             echo "✅ **Total Signals:** $TOTAL" >> $GITHUB_STEP_SUMMARY
             echo "✅ **Tactics with Data:** $TACTICS/16" >> $GITHUB_STEP_SUMMARY
             echo "✅ **Version:** $VERSION" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            
-            echo "### 📊 Distribution by Tactic" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            
-            python -c "
-import json
-try:
-    data = json.load(open('nomos_home_intelligence.json'))
-    insights = sorted(data['insights'].items(), key=lambda x: x[1]['total_signals'], reverse=True)
-    print('| Tactic | Signals |')
-    print('|--------|---------|')
-    for tactic, info in insights[:10]:
-        print(f'| {tactic} | {info[\"total_signals\"]} |')
-except Exception as e:
-    print(f'Error generating table: {e}')
-            " >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **Status:** Failed" >> $GITHUB_STEP_SUMMARY
             echo "❌ Intelligence file not generated" >> $GITHUB_STEP_SUMMARY
