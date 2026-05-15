@@ -313,5 +313,26 @@
     "signals_collected": 265,
     "status": "success",
     "error": null
+  },
+  {
+    "timestamp": "2026-05-15T12:41:54.032707",
+    "source": "google_trends",
+    "signals_collected": 0,
+    "status": "partial",
+    "error": "No data"
+  },
+  {
+    "timestamp": "2026-05-15T12:42:03.813180",
+    "source": "reddit",
+    "signals_collected": 0,
+    "status": "partial",
+    "error": "Skipped or no data"
+  },
+  {
+    "timestamp": "2026-05-15T12:45:53.227492",
+    "source": "youtube",
+    "signals_collected": 280,
+    "status": "success",
+    "error": null
   }
 ]
