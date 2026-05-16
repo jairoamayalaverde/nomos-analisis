@@ -32,10 +32,10 @@
     },
     "superar_competencia": {
       "top_insight": "Tu competencia te supera en visibilidad digital",
-      "total_signals": 14,
-      "prevalence": 9,
+      "total_signals": 16,
+      "prevalence": 11,
       "diagnosis": "Tu competencia invierte en visibilidad estratégica mientras tú esperas que el tráfico orgánico llegue solo. Ellos están comprando el mercado que tú intentas ganar gratis. El problema no es su presupuesto... es tu falta de sistema SEO.",
-      "confidence": 0.66,
+      "confidence": 0.67,
       "sources": [
         "youtube"
       ]
@@ -82,10 +82,10 @@
     },
     "marca_no_escala": {
       "top_insight": "Tu negocio depende de ti y no escala sin más horas tuyas",
-      "total_signals": 9,
-      "prevalence": 6,
+      "total_signals": 11,
+      "prevalence": 7,
       "diagnosis": "Creciste sin sistemas y ahora todo depende de ti. Cada cliente nuevo significa más carga operativa, más horas tuyas. Tu marca no puede crecer sin que tú trabajes más... y ese no es un modelo escalable.",
-      "confidence": 0.69,
+      "confidence": 0.68,
       "sources": [
         "youtube"
       ]
@@ -112,7 +112,7 @@
     },
     "servicios_premium": {
       "top_insight": "Compites por precio en lugar de por valor premium",
-      "total_signals": 30,
+      "total_signals": 29,
       "prevalence": 20,
       "diagnosis": "Tu propuesta de valor no comunica la transformación real que entregas. Por eso compites por precio en lugar de por resultados. Servicios mal empaquetados atraen clientes que pagan poco y exigen mucho.",
       "confidence": 0.68,
@@ -122,8 +122,8 @@
     },
     "escalar_contenido": {
       "top_insight": "Produces contenido pero no genera leads ni ventas",
-      "total_signals": 62,
-      "prevalence": 43,
+      "total_signals": 66,
+      "prevalence": 46,
       "diagnosis": "Estás produciendo contenido, pero sin intención de conversión estratégica. Por eso el esfuerzo no se traduce en leads ni ventas consistentes. Más contenido no es la solución... es dirección comercial en cada pieza.",
       "confidence": 0.68,
       "sources": [
@@ -132,8 +132,8 @@
     },
     "estetica_visual": {
       "top_insight": "Diseño bonito pero sin arquitectura de visibilidad",
-      "total_signals": 41,
-      "prevalence": 28,
+      "total_signals": 42,
+      "prevalence": 29,
       "diagnosis": "Invertiste en diseño web, pero priorizaste estética sobre estructura SEO y velocidad de carga. Resultado: una web bonita que nadie encuentra. El problema no es el diseño... es la arquitectura de visibilidad detrás.",
       "confidence": 0.69,
       "sources": [
@@ -142,8 +142,8 @@
     },
     "ads_convertir": {
       "top_insight": "Inviertes en ads pero el ROI es bajo o inconsistente",
-      "total_signals": 52,
-      "prevalence": 36,
+      "total_signals": 53,
+      "prevalence": 37,
       "diagnosis": "Estás comprando tráfico, pero no tienes un sistema que lo convierta de forma predecible. Por eso el ROI es inconsistente mes a mes. El problema no es la inversión en ads... es la arquitectura de conversión detrás.",
       "confidence": 0.69,
       "sources": [
@@ -162,8 +162,8 @@
     }
   },
   "metadata": {
-    "generated_at": "2026-05-15T12:45:53.373261",
-    "total_signals": 538,
+    "generated_at": "2026-05-16T11:55:27.186130",
+    "total_signals": 547,
     "version": "4.4-normalized",
     "tactics_with_data": 16,
     "avg_confidence": 0.69,
