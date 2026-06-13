@@ -2,8 +2,8 @@
   "insights": {
     "web_no_convierte": {
       "top_insight": "Tienes tráfico pero no conviertes",
-      "total_signals": 64,
-      "prevalence": 44,
+      "total_signals": 62,
+      "prevalence": 43,
       "diagnosis": "Tienes engagement, pero no un sistema de conversión claro. Por eso cada like, cada comentario, termina sin ingresos. La pregunta no es si funciona... es cuánto dinero estás dejando pasar cada día.",
       "confidence": 0.69,
       "sources": [
@@ -12,8 +12,8 @@
     },
     "autoridad_sector": {
       "top_insight": "No tienes autoridad visible en tu sector",
-      "total_signals": 59,
-      "prevalence": 41,
+      "total_signals": 56,
+      "prevalence": 39,
       "diagnosis": "Tu marca no aparece ni cuando la buscan directamente. Eso significa que tu autoridad digital es prácticamente inexistente. Cada búsqueda de tu nombre hoy es una oportunidad que captura otro.",
       "confidence": 0.69,
       "sources": [
@@ -52,8 +52,8 @@
     },
     "proyectos_estancados": {
       "top_insight": "Empiezas proyectos pero se estancan sin avanzar",
-      "total_signals": 79,
-      "prevalence": 55,
+      "total_signals": 90,
+      "prevalence": 63,
       "diagnosis": "Arrancas proyectos con energía, pero a las 3 semanas se estancan. Sin un sistema claro de accountability y ejecución, el ciclo se repite. No necesitas más motivación... necesitas estructura.",
       "confidence": 0.69,
       "sources": [
@@ -82,17 +82,17 @@
     },
     "marca_no_escala": {
       "top_insight": "Tu negocio depende de ti y no escala sin más horas tuyas",
-      "total_signals": 18,
-      "prevalence": 12,
+      "total_signals": 13,
+      "prevalence": 9,
       "diagnosis": "Creciste sin sistemas y ahora todo depende de ti. Cada cliente nuevo significa más carga operativa, más horas tuyas. Tu marca no puede crecer sin que tú trabajes más... y ese no es un modelo escalable.",
-      "confidence": 0.69,
+      "confidence": 0.68,
       "sources": [
         "youtube"
       ]
     },
     "modernizacion_rapida": {
       "top_insight": "Tus procesos son manuales mientras la competencia automatiza",
-      "total_signals": 29,
+      "total_signals": 30,
       "prevalence": 20,
       "diagnosis": "Tu competencia adoptó automatización y sistemas modernos mientras tú sigues con procesos manuales. La brecha de eficiencia crece cada mes. No necesitas más esfuerzo... necesitas herramientas que multipliquen tu capacidad.",
       "confidence": 0.69,
@@ -122,8 +122,8 @@
     },
     "escalar_contenido": {
       "top_insight": "Produces contenido pero no genera leads ni ventas",
-      "total_signals": 82,
-      "prevalence": 57,
+      "total_signals": 88,
+      "prevalence": 61,
       "diagnosis": "Estás produciendo contenido, pero sin intención de conversión estratégica. Por eso el esfuerzo no se traduce en leads ni ventas consistentes. Más contenido no es la solución... es dirección comercial en cada pieza.",
       "confidence": 0.68,
       "sources": [
@@ -132,8 +132,8 @@
     },
     "estetica_visual": {
       "top_insight": "Diseño bonito pero sin arquitectura de visibilidad",
-      "total_signals": 75,
-      "prevalence": 52,
+      "total_signals": 72,
+      "prevalence": 50,
       "diagnosis": "Invertiste en diseño web, pero priorizaste estética sobre estructura SEO y velocidad de carga. Resultado: una web bonita que nadie encuentra. El problema no es el diseño... es la arquitectura de visibilidad detrás.",
       "confidence": 0.69,
       "sources": [
@@ -142,8 +142,8 @@
     },
     "ads_convertir": {
       "top_insight": "Inviertes en ads pero el ROI es bajo o inconsistente",
-      "total_signals": 109,
-      "prevalence": 76,
+      "total_signals": 110,
+      "prevalence": 77,
       "diagnosis": "Estás comprando tráfico, pero no tienes un sistema que lo convierta de forma predecible. Por eso el ROI es inconsistente mes a mes. El problema no es la inversión en ads... es la arquitectura de conversión detrás.",
       "confidence": 0.69,
       "sources": [
@@ -152,8 +152,8 @@
     },
     "automatizacion": {
       "top_insight": "Procesos manuales repetitivos sin integración",
-      "total_signals": 26,
-      "prevalence": 18,
+      "total_signals": 31,
+      "prevalence": 21,
       "diagnosis": "Tus procesos son manuales y desconectados. Tu equipo está ocupado moviendo información entre herramientas en lugar de crear valor. Sin automatización, estás pagando por trabajo repetitivo que una integración resolvería.",
       "confidence": 0.69,
       "sources": [
@@ -162,8 +162,8 @@
     }
   },
   "metadata": {
-    "generated_at": "2026-06-12T14:18:56.641518",
-    "total_signals": 838,
+    "generated_at": "2026-06-13T12:31:45.199864",
+    "total_signals": 849,
     "version": "4.4-normalized",
     "tactics_with_data": 16,
     "avg_confidence": 0.69,
