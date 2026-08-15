@@ -2,17 +2,17 @@
   "insights": {
     "web_no_convierte": {
       "top_insight": "Tienes tráfico pero no conviertes",
-      "total_signals": 117,
-      "prevalence": 81,
+      "total_signals": 124,
+      "prevalence": 86,
       "diagnosis": "Tienes engagement, pero no un sistema de conversión claro. Por eso cada like, cada comentario, termina sin ingresos. La pregunta no es si funciona... es cuánto dinero estás dejando pasar cada día.",
-      "confidence": 0.69,
+      "confidence": 0.68,
       "sources": [
         "youtube"
       ]
     },
     "autoridad_sector": {
       "top_insight": "No tienes autoridad visible en tu sector",
-      "total_signals": 84,
+      "total_signals": 83,
       "prevalence": 58,
       "diagnosis": "Tu marca no aparece ni cuando la buscan directamente. Eso significa que tu autoridad digital es prácticamente inexistente. Cada búsqueda de tu nombre hoy es una oportunidad que captura otro.",
       "confidence": 0.69,
@@ -32,8 +32,8 @@
     },
     "superar_competencia": {
       "top_insight": "Tu competencia te supera en visibilidad digital",
-      "total_signals": 46,
-      "prevalence": 32,
+      "total_signals": 50,
+      "prevalence": 34,
       "diagnosis": "Tu competencia invierte en visibilidad estratégica mientras tú esperas que el tráfico orgánico llegue solo. Ellos están comprando el mercado que tú intentas ganar gratis. El problema no es su presupuesto... es tu falta de sistema SEO.",
       "confidence": 0.69,
       "sources": [
@@ -42,8 +42,8 @@
     },
     "ideas_sin_plan": {
       "top_insight": "Tienes ideas pero no sistema de ejecución",
-      "total_signals": 159,
-      "prevalence": 111,
+      "total_signals": 164,
+      "prevalence": 114,
       "diagnosis": "Tienes ideas, pero no un sistema que las convierta en ejecución. Por eso empiezas muchas cosas pero terminas pocas. El problema no es la creatividad... es la falta de método para priorizar y ejecutar.",
       "confidence": 0.69,
       "sources": [
@@ -52,8 +52,8 @@
     },
     "proyectos_estancados": {
       "top_insight": "Empiezas proyectos pero se estancan sin avanzar",
-      "total_signals": 117,
-      "prevalence": 81,
+      "total_signals": 118,
+      "prevalence": 82,
       "diagnosis": "Arrancas proyectos con energía, pero a las 3 semanas se estancan. Sin un sistema claro de accountability y ejecución, el ciclo se repite. No necesitas más motivación... necesitas estructura.",
       "confidence": 0.69,
       "sources": [
@@ -62,18 +62,18 @@
     },
     "mensaje_confuso": {
       "top_insight": "Tu mensaje no genera urgencia ni claridad",
-      "total_signals": 62,
-      "prevalence": 43,
+      "total_signals": 59,
+      "prevalence": 41,
       "diagnosis": "Tu comunicación no genera acción inmediata. El cliente entiende lo que haces, pero no siente urgencia de comprarte ahora. Sin escasez ni urgencia clara, tu propuesta siempre queda \"para después\".",
-      "confidence": 0.7,
+      "confidence": 0.69,
       "sources": [
         "youtube"
       ]
     },
     "embudo_desordenado": {
       "top_insight": "Tu embudo pierde leads en cada etapa",
-      "total_signals": 47,
-      "prevalence": 32,
+      "total_signals": 51,
+      "prevalence": 35,
       "diagnosis": "Tu embudo no está roto... está perdiendo dinero en cada etapa. Leads entran, pero no hay un sistema que los convierta en clientes de forma predecible. El problema no es el tráfico... es lo que pasa después.",
       "confidence": 0.69,
       "sources": [
@@ -82,8 +82,8 @@
     },
     "marca_no_escala": {
       "top_insight": "Tu negocio depende de ti y no escala sin más horas tuyas",
-      "total_signals": 40,
-      "prevalence": 27,
+      "total_signals": 37,
+      "prevalence": 25,
       "diagnosis": "Creciste sin sistemas y ahora todo depende de ti. Cada cliente nuevo significa más carga operativa, más horas tuyas. Tu marca no puede crecer sin que tú trabajes más... y ese no es un modelo escalable.",
       "confidence": 0.69,
       "sources": [
@@ -92,8 +92,8 @@
     },
     "modernizacion_rapida": {
       "top_insight": "Tus procesos son manuales mientras la competencia automatiza",
-      "total_signals": 33,
-      "prevalence": 23,
+      "total_signals": 32,
+      "prevalence": 22,
       "diagnosis": "Tu competencia adoptó automatización y sistemas modernos mientras tú sigues con procesos manuales. La brecha de eficiencia crece cada mes. No necesitas más esfuerzo... necesitas herramientas que multipliquen tu capacidad.",
       "confidence": 0.69,
       "sources": [
@@ -102,8 +102,8 @@
     },
     "metodo_equipo": {
       "top_insight": "Tu equipo no tiene prioridades claras y todo es urgente",
-      "total_signals": 78,
-      "prevalence": 54,
+      "total_signals": 76,
+      "prevalence": 53,
       "diagnosis": "Tu equipo ejecuta, pero sin una prioridad clara compartida. Y cuando todo es urgente, nada realmente avanza. No necesitas más esfuerzo de tu gente... necesitas un sistema de decisión que alinee energía con resultados.",
       "confidence": 0.69,
       "sources": [
@@ -112,8 +112,8 @@
     },
     "servicios_premium": {
       "top_insight": "Compites por precio en lugar de por valor premium",
-      "total_signals": 53,
-      "prevalence": 37,
+      "total_signals": 43,
+      "prevalence": 30,
       "diagnosis": "Tu propuesta de valor no comunica la transformación real que entregas. Por eso compites por precio en lugar de por resultados. Servicios mal empaquetados atraen clientes que pagan poco y exigen mucho.",
       "confidence": 0.68,
       "sources": [
@@ -132,8 +132,8 @@
     },
     "estetica_visual": {
       "top_insight": "Diseño bonito pero sin arquitectura de visibilidad",
-      "total_signals": 95,
-      "prevalence": 66,
+      "total_signals": 96,
+      "prevalence": 67,
       "diagnosis": "Invertiste en diseño web, pero priorizaste estética sobre estructura SEO y velocidad de carga. Resultado: una web bonita que nadie encuentra. El problema no es el diseño... es la arquitectura de visibilidad detrás.",
       "confidence": 0.69,
       "sources": [
@@ -142,8 +142,8 @@
     },
     "ads_convertir": {
       "top_insight": "Inviertes en ads pero el ROI es bajo o inconsistente",
-      "total_signals": 171,
-      "prevalence": 119,
+      "total_signals": 168,
+      "prevalence": 117,
       "diagnosis": "Estás comprando tráfico, pero no tienes un sistema que lo convierta de forma predecible. Por eso el ROI es inconsistente mes a mes. El problema no es la inversión en ads... es la arquitectura de conversión detrás.",
       "confidence": 0.69,
       "sources": [
@@ -152,8 +152,8 @@
     },
     "automatizacion": {
       "top_insight": "Procesos manuales repetitivos sin integración",
-      "total_signals": 64,
-      "prevalence": 44,
+      "total_signals": 76,
+      "prevalence": 53,
       "diagnosis": "Tus procesos son manuales y desconectados. Tu equipo está ocupado moviendo información entre herramientas en lugar de crear valor. Sin automatización, estás pagando por trabajo repetitivo que una integración resolvería.",
       "confidence": 0.69,
       "sources": [
@@ -162,8 +162,8 @@
     }
   },
   "metadata": {
-    "generated_at": "2026-08-14T11:52:40.148379",
-    "total_signals": 1373,
+    "generated_at": "2026-08-15T11:24:28.561738",
+    "total_signals": 1384,
     "version": "4.4-normalized",
     "tactics_with_data": 16,
     "avg_confidence": 0.69,
