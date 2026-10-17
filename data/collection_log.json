@@ -1,26 +1,5 @@
 [
   {
-    "timestamp": "2026-09-17T15:29:50.231342",
-    "source": "google_trends",
-    "signals_collected": 0,
-    "status": "partial",
-    "error": "No data"
-  },
-  {
-    "timestamp": "2026-09-17T15:29:55.694289",
-    "source": "reddit",
-    "signals_collected": 0,
-    "status": "partial",
-    "error": "Skipped or no data"
-  },
-  {
-    "timestamp": "2026-09-17T15:33:37.463583",
-    "source": "youtube",
-    "signals_collected": 300,
-    "status": "success",
-    "error": null
-  },
-  {
     "timestamp": "2026-09-18T14:49:37.348859",
     "source": "google_trends",
     "signals_collected": 0,
@@ -626,6 +605,27 @@
     "timestamp": "2026-10-16T15:18:52.124770",
     "source": "youtube",
     "signals_collected": 274,
+    "status": "success",
+    "error": null
+  },
+  {
+    "timestamp": "2026-10-17T14:09:12.865622",
+    "source": "google_trends",
+    "signals_collected": 0,
+    "status": "partial",
+    "error": "No data"
+  },
+  {
+    "timestamp": "2026-10-17T14:09:16.809699",
+    "source": "reddit",
+    "signals_collected": 0,
+    "status": "partial",
+    "error": "Skipped or no data"
+  },
+  {
+    "timestamp": "2026-10-17T14:13:06.681051",
+    "source": "youtube",
+    "signals_collected": 257,
     "status": "success",
     "error": null
   }
